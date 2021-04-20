@@ -32,7 +32,7 @@ const AccountButton = (props) => {
     return (
         <>
         <Button className={classes.button} aria-haspopup="true" aria-controls="simple-menu" 
-        onClick={handleClick} startIcon={<AccountCircleIcon style={{ color: grey[50] }} />}>
+        onClick={handleClick} startIcon={<AccountCircleIcon />}>
           Joyfer
         </Button>
 <Menu

@@ -34,7 +34,7 @@ export default function ButtonAppBar() {
 
   return (
     <Slide className={classes.root} in={trigger}>
-      <AppBar position="fixed" elevation={0}>
+      <AppBar position="fixed" elevation={1}>
         <Toolbar>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />

@@ -5,7 +5,7 @@ const Layout = (props) => (
     <div>
         <Head>
         <title>Hola</title>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&amp;display=swap" rel="stylesheet" />
         </Head>
             <Navbar></Navbar>
         <div>
