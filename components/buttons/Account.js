@@ -1,9 +1,6 @@
 import { useState } from 'react'
-import Button from '@material-ui/core/Button'
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import { grey } from '@material-ui/core/colors';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+import { Button, Menu, MenuItem, Divider } from '@material-ui/core';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle'
 import { makeStyles } from '@material-ui/core/styles';
 
 
@@ -13,7 +10,11 @@ const useStyles = makeStyles({
       color: 'red',
     },
     button: {
-      color: 'white'
+      color: 'white',
+      margin: '0 3px'
+    },
+    divider: {
+      margin: "10px 0"
     }
   });
 
@@ -31,6 +32,7 @@ const AccountButton = (props) => {
   };
     return (
         <>
+          <Divider orientation="vertical" flexItem className={classes.divider} />
         <Button className={classes.button} aria-haspopup="true" aria-controls="simple-menu" 
         onClick={handleClick} startIcon={<AccountCircleIcon />}>
           Joyfer

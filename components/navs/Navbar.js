@@ -1,14 +1,15 @@
-import React from 'react';
+import Link from "next/link"
+
 import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+
+import { AppBar, Toolbar, Typography } from '@material-ui/core'
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
 import ShoppingCartButton from '../buttons/ShoppingCart';
 import AccountButton from '../buttons/Account';
-import SearchNavbar from './Search'
+import MenuBrands from '../buttons/MenuBrands'
+import SearchNavbar from './Search';
 
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import Slide from '@material-ui/core/Slide';
@@ -26,8 +27,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
-
 export default function ButtonAppBar() {
   const classes = useStyles();
   const trigger = useScrollTrigger({disableHysteresis: true});
@@ -40,9 +39,12 @@ export default function ButtonAppBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            Logo
+          <Link href="/">
+           <a>Logo</a> 
+          </Link>
           </Typography>
           <SearchNavbar></SearchNavbar>
+          <MenuBrands></MenuBrands>
           <AccountButton color="inherit"></AccountButton>
           <ShoppingCartButton color="inherit"></ShoppingCartButton>
         </Toolbar>

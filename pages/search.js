@@ -2,6 +2,7 @@ import Head from "next/head";
 
 //Components
 import Layout from "../components/Layout";
+import SearchedArticlesHeader from "../components/articles/SearchedArticlesHeader";
 import ListArticles from "../components/articles/ListArticles";
 import InitialNav from "../components/navs/InitialNav";
 
@@ -14,12 +15,12 @@ const useStyles = makeStyles({
     height: "100vh",
   },
   image: {
-    height: "70vh",
+    height: "20vh",
     background: "url('https://i.imgur.com/NOPvS1X.jpg')",
   },
 });
 
-export default function Index() {
+export default function SearchPage() {
   const classes = useStyles();
   return (
     <Layout>
@@ -36,10 +37,8 @@ export default function Index() {
         alignItems="center"
         className={classes.root}
       >
-        <ListArticles
-          title="Lo más vendido"
-          subtitle="Descubre lo que la gente ama más"
-        ></ListArticles>
+        <SearchedArticlesHeader />
+        <ListArticles title="" subtitle=""></ListArticles>
       </Box>
     </Layout>
   );

@@ -28,7 +28,6 @@ export const Home = () => {
           Get Started with AppContext API, using ContextAPI.
         </p>
       </main>
-
       <style jsx>{`
         .container {
           min-height: 100vh;
