@@ -1,9 +1,9 @@
 import ArticleCard from "./ArticleCard";
 
 //Material UI
-import { Grid, Box, Typography, Button } from '@material-ui/core'
+import { Grid, Box, Typography, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,35 +29,42 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 20,
   },
   grid: {
-    marginTop: 20
-  }
+    marginTop: 20,
+  },
 }));
 
-const MainArticles = ({title, subtitle}) => {
+const MainArticles = ({ title, subtitle }) => {
   const classes = useStyles();
   return (
     <Box width="100%" className={classes.root}>
-      { title != "" ? 
+      {title != "" ? (
         <>
-<Typography
-className={classes.title}
-variant="h2"
-color="initial"
-align="center"
->
-{title}
-</Typography>
-<Typography
-className={classes.subtitle}
-variant="subtitle1"
-color="initial"
-align="center"
->
-{subtitle}
-</Typography>
-      </> : <></> }
+          <Typography
+            className={classes.title}
+            variant="h2"
+            color="initial"
+            align="center"
+          >
+            {title}
+          </Typography>
+          <Typography
+            className={classes.subtitle}
+            variant="subtitle1"
+            color="initial"
+            align="center"
+          >
+            {subtitle}
+          </Typography>
+        </>
+      ) : (
+        <></>
+      )}
       <Grid container spacing={2} className={classes.grid}>
-        <ArticleCard nombre="Nike Retro 1" categoria="Zapatillas deportivas" precio="300"></ArticleCard>
+        <ArticleCard
+          name="Nike Retro 1"
+          category="Zapatillas deportivas"
+          price={300}
+        ></ArticleCard>
       </Grid>
       <Button
         className={classes.button}

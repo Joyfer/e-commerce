@@ -24,7 +24,7 @@ export default function Index() {
   return (
     <Layout>
       <Head>
-        <title>Next Shop || Search: Nike</title>
+        <title>Next Shop || Home</title>
       </Head>
       <Box className={classes.image}>
         <InitialNav></InitialNav>

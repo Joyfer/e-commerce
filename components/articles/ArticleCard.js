@@ -1,6 +1,7 @@
-import { makeStyles } from "@material-ui/core/styles";
+import PropTypes from 'prop-types';
 
 //Material UI
+import { makeStyles } from "@material-ui/core/styles";
 import { Card, CardActionArea, CardActions, CardContent, CardMedia, Typography, Grid} from '@material-ui/core';
 
 import AddCart from "../buttons/AddCart";
@@ -18,7 +19,7 @@ const useStyles = makeStyles({
   },
 });
 
-const ArticlesCard = ({ nombre, categoria, precio }) => {
+const ArticlesCard = ({ name, category, price }) => {
   const classes = useStyles();
   return (
     <Grid item xs={12} sm={6} lg={4}>
@@ -31,17 +32,17 @@ const ArticlesCard = ({ nombre, categoria, precio }) => {
           />
           <CardContent className={classes.bodyCard}>
             <Typography variant="h5" component="h2">
-              {nombre}
+              {name}
             </Typography>
             <Typography variant="body2" color="textSecondary">
-              {categoria}
+              {category}
             </Typography>
           </CardContent>
         </CardActionArea>
         <CardActions className={classes.actions}>
           <AddCart></AddCart>
           <Typography variant="body1" color="secondary">
-            {precio}$
+            {price}$
           </Typography>
         </CardActions>
       </Card>
