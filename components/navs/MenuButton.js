@@ -10,6 +10,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+import Hidden from '@material-ui/core/Hidden'
 import { useState } from "react";
 
 const useStyles = makeStyles({
@@ -19,6 +20,9 @@ const useStyles = makeStyles({
   fullList: {
     width: 'auto',
   },
+  button: {
+    color: 'white',
+  }
 });
 const MenuButton = () => {
   const classes = useStyles();
@@ -67,16 +71,14 @@ const MenuButton = () => {
   );
 
   return (
-    <div>  
-        <>
-        <IconButton color="inherit" aria-label="menu" onClick={toggleDrawer('left', true)}>
+    <Hidden mdUp>
+        <IconButton className={classes.button} aria-label="menu" onClick={toggleDrawer('left', true)}>
           <MenuIcon />
         </IconButton>
           <Drawer anchor={'left'} open={state['left']} onClose={toggleDrawer('left', false)}>
             {list('left')}
           </Drawer>
-        </>
-    </div>
+        </Hidden>
   );
 }
 

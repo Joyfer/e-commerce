@@ -34,9 +34,7 @@ export default function ButtonAppBar() {
     <Slide className={classes.root} in={trigger}>
       <AppBar position="fixed" elevation={1}>
         <Toolbar>
-          <Hidden mdUp>
          <MenuButton />
-          </Hidden>
           <Typography variant="h6" className={classes.title}>
           <Link href="/">
            <a>Logo</a> 
@@ -45,9 +43,7 @@ export default function ButtonAppBar() {
           <Hidden smDown>
           <SearchNavbar></SearchNavbar>
           </Hidden>
-          <Hidden smDown>
           <MenuBrands></MenuBrands>
-          </Hidden>
           <AccountButton></AccountButton>
           <ShoppingCartButton></ShoppingCartButton>
         </Toolbar>

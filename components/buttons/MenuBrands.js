@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Menu, MenuItem } from "@material-ui/core";
+import { Button, Menu, MenuItem, Hidden} from "@material-ui/core";
 import NestedMenuItem from "material-ui-nested-menu-item";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -28,7 +28,7 @@ const MenuBrands = (props) => {
     setAnchorEl(null);
   };
   return (
-    <>
+  <Hidden smDown>
       <Button
         className={classes.button}
         aria-haspopup="true"
@@ -58,7 +58,7 @@ const MenuBrands = (props) => {
           <MenuItem onClick={handleClose}>Sub-Button 2</MenuItem>
         </NestedMenuItem>
       </Menu>
-    </>
+    </Hidden>
   );
 };
 

@@ -12,8 +12,8 @@ const ShoppingCartButton = (props) => {
     const classes = useStyles(props);
 
     return (
-        <IconButton aria-label="" color="inherit">
-            <ShoppingCartIcon className={classes.button} />
+        <IconButton aria-label="" className={classes.button}>
+            <ShoppingCartIcon  />
         </IconButton>
       );
 }
