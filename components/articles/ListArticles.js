@@ -1,9 +1,9 @@
 import ArticleCard from "./ArticleCard";
+import ShowMore from "../buttons/articles/ShowMore"
 
 //Material UI
 import { Grid, Box, Typography, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,10 +24,6 @@ const useStyles = makeStyles((theme) => ({
     border: 0,
     borderBottom: "thick solid #556cd6",
   },
-  button: {
-    width: "100%",
-    marginTop: 20,
-  },
   grid: {
     marginTop: 20,
   },
@@ -37,8 +33,6 @@ const MainArticles = ({ title, subtitle }) => {
   const classes = useStyles();
   return (
     <Box width="100%" className={classes.root}>
-      {title != "" ? (
-        <>
           <Typography
             className={classes.title}
             variant="h2"
@@ -55,10 +49,6 @@ const MainArticles = ({ title, subtitle }) => {
           >
             {subtitle}
           </Typography>
-        </>
-      ) : (
-        <></>
-      )}
       <Grid container spacing={2} className={classes.grid}>
         <ArticleCard
           name="Nike Retro 1"
@@ -66,14 +56,7 @@ const MainArticles = ({ title, subtitle }) => {
           price={300}
         ></ArticleCard>
       </Grid>
-      <Button
-        className={classes.button}
-        variant="text"
-        color="secondary"
-        endIcon={<ExpandMoreIcon />}
-      >
-        Ver más
-      </Button>
+        <ShowMore />
     </Box>
   );
 };

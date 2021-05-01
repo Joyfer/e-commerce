@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from "@material-ui/core/styles";
 import { Card, CardActionArea, CardActions, CardContent, CardMedia, Typography, Grid} from '@material-ui/core';
 
-import AddCart from "../buttons/AddCart";
+import AddCart from "../buttons/articles/AddCart";
 
 const useStyles = makeStyles({
   media: {

@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 import { useState } from 'react'
 import { Button, Menu, MenuItem, Divider } from '@material-ui/core';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
@@ -44,7 +46,7 @@ const AccountButton = (props) => {
   open={Boolean(anchorEl)}
   onClose={handleClose}
 >
-  <MenuItem onClick={handleClose}>Profile</MenuItem>
+<Link href="/profile"><MenuItem onClick={handleClose}>Profile</MenuItem></Link>
   <MenuItem onClick={handleClose} className={classes.logout}>Logout</MenuItem>
 </Menu>
       </>

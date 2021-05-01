@@ -38,7 +38,7 @@ export default function Index() {
       >
         <ListArticles
           title="Lo más vendido"
-          subtitle="Descubre lo que la gente ama más"
+          subtitle="Descubre lo que la gente ama"
         ></ListArticles>
       </Box>
     </Layout>

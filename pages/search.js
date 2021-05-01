@@ -38,7 +38,6 @@ export default function SearchPage() {
         className={classes.root}
       >
         <SearchedArticlesHeader />
-        <ListArticles title="" subtitle=""></ListArticles>
       </Box>
     </Layout>
   );
