@@ -1,9 +1,9 @@
 import Button from '@material-ui/core/Button';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
 const AddCart = () => {
     return ( 
-        <Button variant="text" color="secondary" endIcon={<ShoppingCartIcon />}>
+        <Button variant="text" color="secondary" endIcon={<AddShoppingCartIcon />}>
         AÑADIR
         </Button>
      );

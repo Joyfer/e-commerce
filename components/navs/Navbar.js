@@ -1,17 +1,10 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-import { AppBar, Toolbar, Hidden } from "@material-ui/core";
-
-import ShoppingCartButton from "../buttons/navigation/ShoppingCart";
-import AccountButton from "../buttons/navigation/Account";
-import MenuBrands from "../buttons/navigation/MenuBrands";
-import SearchNavbar from "./Search";
-import MenuButton from "../buttons/navigation/MenuButton";
-import LogoButton from "../buttons/navigation/Logo";
-import ButtonNavigationNav from "../buttons/navigation/ButtonNavigationNav";
-
+import { AppBar, Toolbar } from "@material-ui/core";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import Slide from "@material-ui/core/Slide";
+
+import NavigationButtons from "./NavigationButtons"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,15 +23,6 @@ export default function ButtonAppBar() {
     <Slide className={classes.root} in={trigger}>
       <AppBar position="fixed" elevation={1}>
         <Toolbar>
-          <MenuButton />
-          <LogoButton />
-          <Hidden smDown>
-            <SearchNavbar />
-          </Hidden>
-          <ButtonNavigationNav text="Inicio" />
-          <MenuBrands />
-          <AccountButton />
-          <ShoppingCartButton />
         </Toolbar>
       </AppBar>
     </Slide>

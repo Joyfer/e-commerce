@@ -1,7 +1,7 @@
+import React from 'react'
 import Link from "next/link";
 import { Button, Hidden } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 const useStyles = makeStyles({
   button: {
@@ -10,13 +10,19 @@ const useStyles = makeStyles({
   },
 });
 
-const ButtonNavigationNav = ({ text }) => {
+const ButtonNavigationComponent = React.forwardRef(({href, text}, ref) => {
   const classes = useStyles();
   return (
+    <Button href={href} ref={ref} className={classes.button}>{text}</Button>
+  );
+});
+
+const ButtonNavigationNav = ({ text, link }) => {
+  return (
     <Hidden smDown>
-      <Button className={classes.button} startIcon={<AccountCircleIcon />}>
-        {text}
-      </Button>
+      <Link href={link} passHref>
+      <ButtonNavigationComponent text={text} />
+      </Link>
     </Hidden>
   );
 };
