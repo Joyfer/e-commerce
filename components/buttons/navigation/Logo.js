@@ -13,9 +13,9 @@ const LogoButton = () => {
   const classes = useStyles();
   return (
     <Typography variant="h6" className={classes.title}>
-
+      <Link href="/">
         <a>Logo</a>
-      
+      </Link>
     </Typography>
   );
 };

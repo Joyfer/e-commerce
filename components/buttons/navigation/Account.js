@@ -1,9 +1,8 @@
-import Link from "next/link";
 import React, { useState } from "react";
-
 import { Button, Menu, MenuItem, Divider } from "@material-ui/core";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import { makeStyles } from "@material-ui/core/styles";
+import MenuLink from "../menu/MenuLink"
 
 const useStyles = makeStyles({
   logout: {
@@ -18,11 +17,8 @@ const useStyles = makeStyles({
   },
 });
 
-const MenuItemLink = React.forwardRef((props, ref) => {
-  const classes = useStyles();
-  return (
-    <MenuItem ref={ref} {...props}>Profile</MenuItem>
-  );
+const MuiMenu = React.forwardRef((props, ref) => {
+  return <Menu  ref={ref} {...props} />;
 });
 
 const AccountButton = (props) => {
@@ -37,7 +33,6 @@ const AccountButton = (props) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
   return (
     <>
       <Divider orientation="vertical" flexItem className={classes.divider} />
@@ -50,20 +45,18 @@ const AccountButton = (props) => {
       >
         Joyfer
       </Button>
-      <Menu
+      <MuiMenu
         id="simple-menu"
         anchorEl={anchorEl}
         keepMounted
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <Link href="/profile" passHref>
-        <MenuItemLink onClick={handleClose} />
-        </Link>
+        <MenuLink onClick={handleClose} />
         <MenuItem onClick={handleClose} className={classes.logout}>
           Logout
         </MenuItem>
-      </Menu>
+      </MuiMenu>
     </>
   );
 };
