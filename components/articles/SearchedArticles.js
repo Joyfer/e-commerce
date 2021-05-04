@@ -1,5 +1,4 @@
 import ArticleCard from "./ArticleCard";
-import ShowMore from "../buttons/articles/ShowMore"
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -29,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SearchedArticlesHeader = () => {
+const SearchedArticles = ({searchedQuery}) => {
   const classes = useStyles();
   return (
     <Box width="100%" className={classes.root}>
@@ -47,7 +46,7 @@ const SearchedArticlesHeader = () => {
         color="initial"
         align="center"
       >
-        Nike
+        {searchedQuery}
       </Typography>
       <Grid container spacing={2} className={classes.grid}>
         <ArticleCard
@@ -56,9 +55,8 @@ const SearchedArticlesHeader = () => {
           price={300}
         ></ArticleCard>
       </Grid>
-      <ShowMore />
     </Box>
   );
 };
 
-export default SearchedArticlesHeader;
+export default SearchedArticles;

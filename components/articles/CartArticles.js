@@ -27,7 +27,7 @@ const CartArticles = () => {
     return <ListItem button component="a" {...props} />;
   }
   return (
-    <Box my={1} bgcolor="#f7f7f7" className={classes.boxList}>
+    <Box my={1} className={classes.boxList}>
       <List>
         <ListItemLink>
           <ListItemAvatar>

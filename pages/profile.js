@@ -7,7 +7,7 @@ import CartArticles from "../components/articles/CartArticles";
 import LogoutButton from "../components/buttons/session/LogoutButton";
 
 //Material UI
-import { Box, Paper, Typography } from "@material-ui/core";
+import { Box, Paper, Typography, Hidden } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import MailIcon from "@material-ui/icons/Mail";
 
@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     width: "70%",
     margin: "auto",
+    paddingBottom: 5,
     [theme.breakpoints.down("sm")]: {
       width: "96%",
     },
@@ -54,16 +55,26 @@ export default function Profile() {
           className={classes.root}
         >
           <Paper className={classes.paper}>
-            <Box bgcolor="primary.main" py={2} color="white">
+            <Box
+              bgcolor="primary.main"
+              py={2}
+              color="white"
+              display="flex"
+              flexDirection="column"
+              alignItems="center"
+              px={4}
+            >
               <Typography variant="h2" className={classes.textCenter}>
                 Joyfer
               </Typography>
               <br />
-              <Box display="flex" justifyContent="center">
+              <Box display="flex">
+              <Hidden smDown>
                 <MailIcon className={classes.iconMail} />
-                <Typography variant="subtitle1" className={classes.textCenter}>
-                  <b>Correo eléctronico: </b>joyferramos@gmail.com
-                </Typography>
+              </Hidden>
+              <Typography variant="subtitle1" className={classes.textCenter}>
+                <b>Correo eléctronico: </b>joyferramos@gmail.com
+              </Typography>
               </Box>
             </Box>
             <Box mt={2}>

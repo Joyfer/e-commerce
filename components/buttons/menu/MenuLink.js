@@ -3,8 +3,8 @@ import React from 'react'
 
 import { MenuItem } from "@material-ui/core";
 
-const MenuLink = React.forwardRef((props, ref) => {
-  return <Link href="/profile"><MenuItem ref={ref} {...props}></MenuItem></Link>;
+const MenuLink = React.forwardRef(({link, label, onChildClick}, ref) => {
+  return <Link href={link}><MenuItem ref={ref} onClick={onChildClick} >{label}</MenuItem></Link>;
 });
 
 export default MenuLink;

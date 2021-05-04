@@ -23,6 +23,7 @@ export default function ButtonAppBar() {
     <Slide className={classes.root} in={trigger}>
       <AppBar position="fixed" elevation={1}>
         <Toolbar>
+        <NavigationButtons />
         </Toolbar>
       </AppBar>
     </Slide>

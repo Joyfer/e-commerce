@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { Button, Menu, MenuItem, Hidden } from "@material-ui/core";
+import { Button, MenuItem, Hidden } from "@material-ui/core";
 import NestedMenuItem from "material-ui-nested-menu-item";
+import MuiMenu from "../menu/Menu"
+import MenuLink from "../menu/MenuLink"
 
 import { makeStyles } from "@material-ui/core/styles";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
@@ -13,6 +15,9 @@ const useStyles = makeStyles({
     color: "white",
     margin: "0 3px",
   },
+  test: {
+    justifyContent:'space-between'
+  }
 });
 
 const MenuBrands = (props) => {
@@ -38,26 +43,39 @@ const MenuBrands = (props) => {
       >
         Marcas
       </Button>
-      <Menu
+      <MuiMenu
         id="simple-menu"
         anchorEl={anchorEl}
         keepMounted
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>Nike</MenuItem>
-        <MenuItem onClick={handleClose}>Adidas</MenuItem>
-        <MenuItem onClick={handleClose}>Gucci</MenuItem>
-        <NestedMenuItem label="Button 3" parentMenuOpen={!!anchorEl}>
-          <MenuItem onClick={handleClose}>Sub-Button 1</MenuItem>
-          <MenuItem onClick={handleClose}>Sub-Button 2</MenuItem>
+        <MenuItem>Lo más vendido</MenuItem>
+        <NestedMenuItem label="Deportivos" parentMenuOpen={!!anchorEl} className={classes.test}>
+          <MenuLink
+            onChildClick={handleClose}
+            link={{ pathname: "/search", query: { brand: 'nike' }, }}
+            label="Nike"
+          />
+          <MenuLink
+            onChildClick={handleClose}
+            link={{ pathname: "/search", query: { brand: 'adidas' }, }}
+            label="Adidas"
+          />
         </NestedMenuItem>
-        <MenuItem onClick={handleClose}>Button 4</MenuItem>
-        <NestedMenuItem label="Button 5" parentMenuOpen={!!anchorEl}>
-          <MenuItem onClick={handleClose}>Sub-Button 1</MenuItem>
-          <MenuItem onClick={handleClose}>Sub-Button 2</MenuItem>
+        <NestedMenuItem label="Casual" parentMenuOpen={!!anchorEl} className={classes.test}>
+        <MenuLink
+            onChildClick={handleClose}
+            link={{ pathname: "/search", query: { brand: 'vans' }, }}
+            label="Vans"
+          />
+          <MenuLink
+            onChildClick={handleClose}
+            link={{ pathname: "/search", query: { brand: 'rs21' }, }}
+            label="RS21"
+          />
         </NestedMenuItem>
-      </Menu>
+      </MuiMenu>
     </Hidden>
   );
 };

@@ -8,7 +8,7 @@ import AddCart from "../buttons/articles/AddCart";
 
 const useStyles = makeStyles({
   media: {
-    height: 200,
+    height: 220,
   },
   bodyCard: {
     height: 70,

@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import { Button, Menu, MenuItem, Divider } from "@material-ui/core";
+import { useState } from "react";
+import { Button, MenuItem, Divider } from "@material-ui/core";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import { makeStyles } from "@material-ui/core/styles";
 import MenuLink from "../menu/MenuLink"
+import MuiMenu from "../menu/Menu"
 
 const useStyles = makeStyles({
   logout: {
@@ -15,10 +16,6 @@ const useStyles = makeStyles({
   divider: {
     margin: "10px 0",
   },
-});
-
-const MuiMenu = React.forwardRef((props, ref) => {
-  return <Menu  ref={ref} {...props} />;
 });
 
 const AccountButton = (props) => {
@@ -52,7 +49,7 @@ const AccountButton = (props) => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuLink onClick={handleClose} />
+        <MenuLink onChildClick={handleClose} link="/profile" label="Perfil" />
         <MenuItem onClick={handleClose} className={classes.logout}>
           Logout
         </MenuItem>

@@ -2,7 +2,7 @@ import ArticleCard from "./ArticleCard";
 import ShowMore from "../buttons/articles/ShowMore"
 
 //Material UI
-import { Grid, Box, Typography, Button } from "@material-ui/core";
+import { Grid, Box, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   subtitle: {
     paddingBottom: 12,
     border: 0,
-    borderBottom: "thick solid #556cd6",
+    borderBottom: `thick solid ${theme.palette.primary.main}`,
   },
   grid: {
     marginTop: 20,

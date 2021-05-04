@@ -1,9 +1,9 @@
 import Head from "next/head";
+import { useRouter } from 'next/router'
 
 //Components
 import Layout from "../components/Layout";
-import SearchedArticlesHeader from "../components/articles/SearchedArticlesHeader";
-import ListArticles from "../components/articles/ListArticles";
+import SearchedArticlesHeader from "../components/articles/SearchedArticles";
 import InitialNav from "../components/navs/InitialNav";
 
 //Material UI
@@ -20,7 +20,9 @@ const useStyles = makeStyles({
   },
 });
 
+
 export default function SearchPage() {
+  const router = useRouter()
   const classes = useStyles();
   return (
     <Layout>
@@ -37,7 +39,8 @@ export default function SearchPage() {
         alignItems="center"
         className={classes.root}
       >
-        <SearchedArticlesHeader />
+        <SearchedArticlesHeader
+        searchedQuery={router.query.brand.toUpperCase()} />
       </Box>
     </Layout>
   );
