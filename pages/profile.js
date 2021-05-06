@@ -69,12 +69,12 @@ export default function Profile() {
               </Typography>
               <br />
               <Box display="flex">
-              <Hidden smDown>
-                <MailIcon className={classes.iconMail} />
-              </Hidden>
-              <Typography variant="subtitle1" className={classes.textCenter}>
-                <b>Correo eléctronico: </b>joyferramos@gmail.com
-              </Typography>
+                <Hidden smDown>
+                  <MailIcon className={classes.iconMail} />
+                </Hidden>
+                <Typography variant="subtitle1" className={classes.textCenter}>
+                  <b>Correo eléctronico: </b>joyferramos@gmail.com
+                </Typography>
               </Box>
             </Box>
             <Box mt={2}>

@@ -54,24 +54,24 @@ const MenuBrands = (props) => {
         <NestedMenuItem label="Deportivos" parentMenuOpen={!!anchorEl} className={classes.test}>
           <MenuLink
             onChildClick={handleClose}
-            link={{ pathname: "/search", query: { brand: 'nike' }, }}
+            link={{ pathname: "/search/[brand]", query: { brand: 'nike' }, }}
             label="Nike"
           />
           <MenuLink
             onChildClick={handleClose}
-            link={{ pathname: "/search", query: { brand: 'adidas' }, }}
+            link={{ pathname: "/search/[brand]", query: { brand: 'adidas' }, }}
             label="Adidas"
           />
         </NestedMenuItem>
         <NestedMenuItem label="Casual" parentMenuOpen={!!anchorEl} className={classes.test}>
         <MenuLink
             onChildClick={handleClose}
-            link={{ pathname: "/search", query: { brand: 'vans' }, }}
+            link={{ pathname: "/search/[brand]", query: { brand: 'vans' }, }}
             label="Vans"
           />
           <MenuLink
             onChildClick={handleClose}
-            link={{ pathname: "/search", query: { brand: 'rs21' }, }}
+            link={{ pathname: "/search/[brand]", query: { brand: 'rs21' }, }}
             label="RS21"
           />
         </NestedMenuItem>

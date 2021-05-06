@@ -2,7 +2,7 @@ import Head from "next/head";
 
 //Components
 import Layout from "../components/Layout";
-import ListArticles from "../components/articles/ListArticles";
+import ListArticles from "../components/articles/ListArticlesIndex";
 import InitialNav from "../components/navs/InitialNav";
 
 //Material UI

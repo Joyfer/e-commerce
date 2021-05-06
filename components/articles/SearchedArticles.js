@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 25,
   },
   subtitle: {
+    textTransform: 'uppercase',
     paddingBottom: 12,
     border: 0,
     borderBottom: "thick solid #556cd6",
