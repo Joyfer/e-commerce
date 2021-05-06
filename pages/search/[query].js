@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 //Components
 import Layout from "../../components/Layout";
-import SearchedArticlesHeader from "../../components/articles/SearchedArticles";
+import SearchedArticles from "../../components/articles/SearchedArticles";
 import InitialNav from "../../components/navs/InitialNav";
 
 //Material UI
@@ -20,17 +20,17 @@ const useStyles = makeStyles({
   },
 });
 
-export default function SearchPage({query}) {
+export default function SearchPage({ query, allProps }) {
   const classes = useStyles();
-  const router = useRouter()
+  const router = useRouter();
 
   if (router.isFallback) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
   return (
     <Layout>
       <Head>
-        <title>Next Shop || Search: {query}</title>
+        <title>Next Shop || Search: {query.toUpperCase()}</title>
       </Head>
       <Box className={classes.image}>
         <InitialNav></InitialNav>
@@ -42,7 +42,7 @@ export default function SearchPage({query}) {
         alignItems="center"
         className={classes.root}
       >
-        <SearchedArticlesHeader searchedQuery={query} />
+        <SearchedArticles searchedQuery={query} cardInformation={allProps} />
       </Box>
     </Layout>
   );
@@ -51,19 +51,24 @@ export default function SearchPage({query}) {
 export async function getStaticPaths() {
   return {
     paths: [
-      { params: { query: 'Nike' } } // Pre-render this path on build time
+      { params: { query: "Nike" } }, // Pre-render this path on build time
     ],
-    fallback: true // Default true for fallback pages
+    fallback: true, // Default true for fallback pages
   };
 }
 
-export async function getStaticProps({params}) {
-  // Get el query url de params
-  let query = params.query
+export async function getStaticProps({ params }) {
+  // Get query from params
+  let query = params.query.toLowerCase();
+  const res = await fetch(`http://localhost:3000/api/articles/${query}`);
+  const allProps = await res.json();
+  console.log(allProps);
+
   return {
     props: {
-      query
+      query,
+      allProps,
     },
     revalidate: 60, // In seconds
-  }
+  };
 }

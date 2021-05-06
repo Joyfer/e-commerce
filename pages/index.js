@@ -2,7 +2,7 @@ import Head from "next/head";
 
 //Components
 import Layout from "../components/Layout";
-import ListArticles from "../components/articles/ListArticlesIndex";
+import MainArticles from "../components/articles/ListArticlesIndex";
 import InitialNav from "../components/navs/InitialNav";
 
 //Material UI
@@ -19,7 +19,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Index() {
+export default function Index({allProps}) {
   const classes = useStyles();
   return (
     <Layout>
@@ -36,11 +36,54 @@ export default function Index() {
         alignItems="center"
         className={classes.root}
       >
-        <ListArticles
-          title="Lo más vendido"
-          subtitle="Descubre lo que la gente ama"
-        ></ListArticles>
+        {[
+          {
+            title: "Lo más vendido",
+            subtitle: "Descubre lo que la gente ama",
+            link: "Top",
+            cardInformation: 'adidas'
+          },
+          {
+            title: "Nike",
+            subtitle: "Lo mejor de Nike",
+            link: "Nike",
+            cardInformation: 'nike'
+          },
+          {
+            title: "Vans",
+            subtitle: "Lo mejor de Vans",
+            link: "Vans",
+            cardInformation: 'vans'
+          },
+        ].map(({ title, subtitle, link, cardInformation }, index) => {
+          return (
+            <MainArticles
+              key={index}
+              title={title}
+              subtitle={subtitle}
+              link={link}
+              cardInformation={allProps.filter((el) => el.brand === cardInformation)}
+            ></MainArticles>
+          );
+        })}
       </Box>
     </Layout>
   );
+}
+
+export async function getStaticProps() {
+  let allProps = [];
+
+  let search = ['nike', 'adidas', 'vans'];
+  for (let el of search){
+    let res = await fetch(`http://localhost:3000/api/articles/${el}`)
+    let newResponse = await res.json()
+    allProps = [...allProps, ...newResponse]
+  }
+  return {
+    props: {
+      allProps
+    },
+    revalidate: 60, // In seconds
+  }
 }

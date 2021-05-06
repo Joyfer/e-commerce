@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 25,
   },
   subtitle: {
-    textTransform: 'uppercase',
+    textTransform: "uppercase",
     paddingBottom: 12,
     border: 0,
     borderBottom: "thick solid #556cd6",
@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SearchedArticles = ({searchedQuery}) => {
+const SearchedArticles = ({ searchedQuery, cardInformation }) => {
   const classes = useStyles();
   return (
     <Box width="100%" className={classes.root}>
@@ -50,11 +50,16 @@ const SearchedArticles = ({searchedQuery}) => {
         {searchedQuery}
       </Typography>
       <Grid container spacing={2} className={classes.grid}>
-        <ArticleCard
-          name="Nike Retro 1"
-          category="Zapatillas deportivas"
-          price={300}
-        ></ArticleCard>
+        {cardInformation.map((el) => {
+          return (
+            <ArticleCard
+              key={el.id}
+              name={el.name}
+              category="Zapatillas deportivas"
+              price={el.price}
+            ></ArticleCard>
+          );
+        })}
       </Grid>
     </Box>
   );

@@ -1,5 +1,5 @@
 import ArticleCard from "./ArticleCard";
-import ShowMore from "../buttons/articles/ShowMore"
+import ShowMore from "../buttons/articles/ShowMore";
 
 //Material UI
 import { Grid, Box, Typography } from "@material-ui/core";
@@ -15,9 +15,7 @@ const useStyles = makeStyles((theme) => ({
       paddingRight: 15,
       paddingLeft: 15,
     },
-  },
-  title: {
-    marginTop: 45,
+    margin: "10px 0 10px 0",
   },
   subtitle: {
     paddingBottom: 12,
@@ -29,34 +27,39 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MainArticles = ({ title, subtitle }) => {
+const MainArticles = ({ title, subtitle, link, cardInformation }) => {
   const classes = useStyles();
   return (
     <Box width="100%" className={classes.root}>
-          <Typography
-            className={classes.title}
-            variant="h2"
-            color="initial"
-            align="center"
-          >
-            {title}
-          </Typography>
-          <Typography
-            className={classes.subtitle}
-            variant="subtitle1"
-            color="initial"
-            align="center"
-          >
-            {subtitle}
-          </Typography>
+      <Typography
+        className={classes.title}
+        variant="h2"
+        color="initial"
+        align="center"
+      >
+        {title}
+      </Typography>
+      <Typography
+        className={classes.subtitle}
+        variant="subtitle1"
+        color="initial"
+        align="center"
+      >
+        {subtitle}
+      </Typography>
       <Grid container spacing={2} className={classes.grid}>
-        <ArticleCard
-          name="Nike Retro 1"
-          category="Zapatillas deportivas"
-          price={300}
-        ></ArticleCard>
+        {cardInformation.map((el) => {
+          return (
+            <ArticleCard
+              key={el.id}
+              name={el.name}
+              category="Zapatillas deportivas"
+              price={el.price}
+            ></ArticleCard>
+          );
+        })}
       </Grid>
-        <ShowMore />
+      <ShowMore link={link} />
     </Box>
   );
 };
