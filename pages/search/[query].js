@@ -30,7 +30,7 @@ export default function SearchPage({ query, allProps }) {
   return (
     <Layout>
       <Head>
-        <title>Next Shop || Search: {query.toUpperCase()}</title>
+        <title>Next Shop || Search: {query}</title>
       </Head>
       <Box className={classes.image}>
         <InitialNav></InitialNav>
@@ -62,7 +62,6 @@ export async function getStaticProps({ params }) {
   let query = params.query.toLowerCase();
   const res = await fetch(`http://localhost:3000/api/articles/${query}`);
   const allProps = await res.json();
-  console.log(allProps);
 
   return {
     props: {

@@ -2,7 +2,7 @@ import Head from "next/head";
 
 //Components
 import Layout from "../components/Layout";
-import MainArticles from "../components/articles/ListArticlesIndex";
+import ListArticlesIndex from "../components/articles/ListArticlesIndex";
 import InitialNav from "../components/navs/InitialNav";
 
 //Material UI
@@ -57,13 +57,13 @@ export default function Index({allProps}) {
           },
         ].map(({ title, subtitle, link, cardInformation }, index) => {
           return (
-            <MainArticles
+            <ListArticlesIndex
               key={index}
               title={title}
               subtitle={subtitle}
               link={link}
               cardInformation={allProps.filter((el) => el.brand === cardInformation)}
-            ></MainArticles>
+            ></ListArticlesIndex>
           );
         })}
       </Box>

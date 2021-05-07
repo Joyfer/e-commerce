@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     textTransform: "uppercase",
     paddingBottom: 12,
     border: 0,
-    borderBottom: "thick solid #556cd6",
+    borderBottom: `thick solid ${theme.palette.primary.main}`,
   },
   grid: {
     marginTop: 20,

@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     height: "90vh",
   },
   paper: {
-    width: "70%",
+    width: "90%",
     margin: "auto",
     paddingBottom: 5,
     [theme.breakpoints.down("sm")]: {

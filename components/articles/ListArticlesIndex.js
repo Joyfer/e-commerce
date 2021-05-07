@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MainArticles = ({ title, subtitle, link, cardInformation }) => {
+const ListArticlesIndex = ({ title, subtitle, link, cardInformation }) => {
   const classes = useStyles();
   return (
     <Box width="100%" className={classes.root}>
@@ -48,13 +48,13 @@ const MainArticles = ({ title, subtitle, link, cardInformation }) => {
         {subtitle}
       </Typography>
       <Grid container spacing={2} className={classes.grid}>
-        {cardInformation.map((el) => {
+        {cardInformation.map(({id, name, price}) => {
           return (
             <ArticleCard
-              key={el.id}
-              name={el.name}
+              key={id}
+              name={name}
               category="Zapatillas deportivas"
-              price={el.price}
+              price={price}
             ></ArticleCard>
           );
         })}
@@ -64,4 +64,4 @@ const MainArticles = ({ title, subtitle, link, cardInformation }) => {
   );
 };
 
-export default MainArticles;
+export default ListArticlesIndex;
