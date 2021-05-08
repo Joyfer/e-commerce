@@ -15,11 +15,12 @@ const useStyles = makeStyles({
   },
   image: {
     height: "70vh",
-    background: "url('https://i.imgur.com/NOPvS1X.jpg')",
+    background:
+      "url('https://images.unsplash.com/photo-1511556532299-8f662fc26c06?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80') center",
   },
 });
 
-export default function Index({allProps}) {
+export default function Index({ allProps }) {
   const classes = useStyles();
   return (
     <Layout>
@@ -41,19 +42,19 @@ export default function Index({allProps}) {
             title: "Lo más vendido",
             subtitle: "Descubre lo que la gente ama",
             link: "Top",
-            cardInformation: 'adidas'
+            cardInformation: "adidas",
           },
           {
             title: "Nike",
             subtitle: "Lo mejor de Nike",
             link: "Nike",
-            cardInformation: 'nike'
+            cardInformation: "nike",
           },
           {
             title: "Vans",
             subtitle: "Lo mejor de Vans",
             link: "Vans",
-            cardInformation: 'vans'
+            cardInformation: "vans",
           },
         ].map(({ title, subtitle, link, cardInformation }, index) => {
           return (
@@ -62,7 +63,9 @@ export default function Index({allProps}) {
               title={title}
               subtitle={subtitle}
               link={link}
-              cardInformation={allProps.filter((el) => el.brand === cardInformation)}
+              cardInformation={allProps.filter(
+                (el) => el.brand === cardInformation
+              )}
             ></ListArticlesIndex>
           );
         })}
@@ -74,16 +77,16 @@ export default function Index({allProps}) {
 export async function getStaticProps() {
   let allProps = [];
 
-  let search = ['nike', 'adidas', 'vans'];
-  for (let el of search){
-    let res = await fetch(`http://localhost:3000/api/articles/brand/${el}`)
-    let newResponse = await res.json()
-    allProps = [...allProps, ...newResponse]
+  let search = ["nike", "adidas", "vans"];
+  for (let el of search) {
+    let res = await fetch(`http://localhost:3000/api/articles/brand/${el}`);
+    let newResponse = await res.json();
+    allProps = [...allProps, ...newResponse];
   }
   return {
     props: {
-      allProps
+      allProps,
     },
     revalidate: 60, // In seconds
-  }
+  };
 }

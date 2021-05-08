@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 //Components
 import Layout from "../../components/Layout";
@@ -22,7 +23,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: "90vh",
+    height: "70vh",
   },
   paper: {
     width: "90%",
@@ -35,7 +36,8 @@ const useStyles = makeStyles((theme) => ({
   },
   image: {
     height: "40vh",
-    background: "url('https://i.imgur.com/NOPvS1X.jpg')",
+    background:
+      "url('https://images.unsplash.com/photo-1511556532299-8f662fc26c06?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80') center",
     position: "relative",
   },
   textCenter: {
@@ -60,12 +62,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ArticleView() {
+export default function ArticleView({ allProps }) {
   const classes = useStyles();
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
   return (
     <Layout>
       <Head>
-        <title>Next Shop || Article</title>
+        <title>Next Shop || Article: {allProps.name}</title>
       </Head>
       <Box className={classes.image}>
         <InitialNav></InitialNav>
@@ -78,20 +85,12 @@ export default function ArticleView() {
           <Paper className={classes.paper}>
             <Grid container spacing={1}>
               <Grid item xs={12} sm={7}>
-                <ArticleImagesView
-                  images={[
-                    "https://i.imgur.com/8gZ9HBR.png",
-                    "https://i.imgur.com/NOPvS1X.jpg",
-                    "https://i.imgur.com/8gZ9HBR.png",
-                    "https://i.imgur.com/8gZ9HBR.png",
-                    "https://i.imgur.com/8gZ9HBR.png",
-                  ]}
-                />
+                <ArticleImagesView images={allProps.images} />
               </Grid>
               <Grid item xs={12} sm={5}>
                 <Box p={2} height="100%">
                   <Typography variant="h3" color="initial">
-                    Nike Retro 1
+                    {allProps.name}
                   </Typography>
                   <Typography
                     variant="subtitle1"
@@ -102,7 +101,8 @@ export default function ArticleView() {
                   </Typography>
                   <Divider className={classes.divider}></Divider>
                   <Typography variant="body1" color="initial">
-                    <b>Marca: </b>Nike
+                    <b>Marca: </b>
+                    {allProps.brand}
                   </Typography>
                   <Box display="flex" alignItems="center">
                     <Typography variant="body1" color="initial">
@@ -119,7 +119,7 @@ export default function ArticleView() {
                       variant="h6"
                       color="secondary"
                     >
-                      300$
+                      {allProps.price}$
                     </Typography>
                   </Box>
                   <Box
@@ -145,4 +145,27 @@ export default function ArticleView() {
       </Box>
     </Layout>
   );
+}
+
+export async function getStaticPaths() {
+  return {
+    paths: [
+      { params: { id: "1" } }, // Pre-render this path on build time
+    ],
+    fallback: true, // Default true for fallback pages
+  };
+}
+
+export async function getStaticProps({ params }) {
+  // Get query from params
+  let id = params.id;
+  console.log(id);
+  const res = await fetch(`http://localhost:3000/api/articles/${id}`);
+  const allProps = await res.json();
+  return {
+    props: {
+      allProps,
+    },
+    revalidate: 60, // In seconds
+  };
 }

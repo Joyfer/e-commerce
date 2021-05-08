@@ -48,13 +48,15 @@ const ListArticlesIndex = ({ title, subtitle, link, cardInformation }) => {
         {subtitle}
       </Typography>
       <Grid container spacing={2} className={classes.grid}>
-        {cardInformation.map(({id, name, price}) => {
+        {cardInformation.map(({id, name, price, images}) => {
           return (
             <ArticleCard
               key={id}
+              image={images[0]}
               name={name}
               category="Zapatillas deportivas"
               price={price}
+              id={id}
             ></ArticleCard>
           );
         })}

@@ -54,6 +54,8 @@ const SearchedArticles = ({ searchedQuery, cardInformation }) => {
           return (
             <ArticleCard
               key={el.id}
+              id={el.id}
+              image={el.images[0]}
               name={el.name}
               category="Zapatillas deportivas"
               price={el.price}
