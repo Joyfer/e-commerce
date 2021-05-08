@@ -6,6 +6,7 @@ import InitialNav from "../../components/navs/InitialNav";
 import SelectInput from "../../components/inputs/select";
 import BuyArticle from "../../components/buttons/articles/BuyArticle";
 import AddCart from "../../components/buttons/articles/AddCart";
+import ArticleImagesView from "../../components/articles/ArticleImagesView";
 
 //Material UI
 import {
@@ -40,35 +41,19 @@ const useStyles = makeStyles((theme) => ({
   textCenter: {
     textAlign: "center",
   },
-  imageMain: {
-    width: "100%",
-    height: 500,
-    objectFit: "cover",
-    padding: 14,
-    [theme.breakpoints.down("sm")]: {
-      height: 280,
-      padding: 2,
-    },
-  },
-  imageSmall: {
-    height: 80,
-    width: 120,
-    objectFit: "cover",
-    padding: 3,
-  },
   subtitle: {
     padding: "0 10px",
   },
   divider: {
     margin: "10px 0",
-    padding: '3px 0',
-    backgroundColor: theme.palette.primary.main
+    padding: "3px 0",
+    backgroundColor: theme.palette.primary.main,
   },
   marginLeft: {
     marginLeft: 7,
   },
   marginButtons: {
-    marginTop: "50%",
+    marginTop: "60%",
     [theme.breakpoints.down("sm")]: {
       marginTop: "10%",
     },
@@ -93,30 +78,15 @@ export default function ArticleView() {
           <Paper className={classes.paper}>
             <Grid container spacing={1}>
               <Grid item xs={12} sm={7}>
-                <Box display="flex" justifyContent="center" alignItems="center">
-                  <img
-                    src="https://i.imgur.com/NOPvS1X.jpg"
-                    alt=""
-                    className={classes.imageMain}
-                  />
-                </Box>
-                <Box display="flex" justifyContent="center" alignItems="center">
-                  <img
-                    src="https://i.imgur.com/NOPvS1X.jpg"
-                    alt=""
-                    className={classes.imageSmall}
-                  />
-                  <img
-                    src="https://i.imgur.com/NOPvS1X.jpg"
-                    alt=""
-                    className={classes.imageSmall}
-                  />
-                  <img
-                    src="https://i.imgur.com/NOPvS1X.jpg"
-                    alt=""
-                    className={classes.imageSmall}
-                  />
-                </Box>
+                <ArticleImagesView
+                  images={[
+                    "https://i.imgur.com/8gZ9HBR.png",
+                    "https://i.imgur.com/NOPvS1X.jpg",
+                    "https://i.imgur.com/8gZ9HBR.png",
+                    "https://i.imgur.com/8gZ9HBR.png",
+                    "https://i.imgur.com/8gZ9HBR.png",
+                  ]}
+                />
               </Grid>
               <Grid item xs={12} sm={5}>
                 <Box p={2} height="100%">
