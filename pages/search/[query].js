@@ -60,7 +60,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   // Get query from params
   let query = params.query.toLowerCase();
-  const res = await fetch(`http://localhost:3000/api/articles/${query}`);
+  const res = await fetch(`http://localhost:3000/api/articles/brand/${query}`);
   const allProps = await res.json();
 
   return {

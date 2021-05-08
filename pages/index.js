@@ -76,7 +76,7 @@ export async function getStaticProps() {
 
   let search = ['nike', 'adidas', 'vans'];
   for (let el of search){
-    let res = await fetch(`http://localhost:3000/api/articles/${el}`)
+    let res = await fetch(`http://localhost:3000/api/articles/brand/${el}`)
     let newResponse = await res.json()
     allProps = [...allProps, ...newResponse]
   }
