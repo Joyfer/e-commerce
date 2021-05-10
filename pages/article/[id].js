@@ -8,6 +8,8 @@ import SelectInput from "../../components/inputs/select";
 import BuyArticle from "../../components/buttons/articles/BuyArticle";
 import AddCart from "../../components/buttons/articles/AddCart";
 import ArticleImagesView from "../../components/articles/ArticleImagesView";
+import BackButton from "../../components/buttons/navigation/BackButton";
+
 
 //Material UI
 import {
@@ -23,7 +25,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: "70vh",
+
   },
   paper: {
     width: "90%",
@@ -81,8 +83,12 @@ export default function ArticleView({ allProps }) {
           justifyContent="center"
           alignItems="center"
           className={classes.root}
+          pb={3}
         >
           <Paper className={classes.paper}>
+            <Box display="flex" justifyContent="start" alignItems="center" px={1} pt={1} >
+              <BackButton />
+            </Box>
             <Grid container spacing={1}>
               <Grid item xs={12} sm={7}>
                 <ArticleImagesView images={allProps.images} />
@@ -159,7 +165,6 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   // Get query from params
   let id = params.id;
-  console.log(id);
   const res = await fetch(`http://localhost:3000/api/articles/${id}`);
   const allProps = await res.json();
   return {

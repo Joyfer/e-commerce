@@ -4,6 +4,7 @@ import Head from "next/head";
 import Layout from "../components/Layout";
 import ListArticlesIndex from "../components/articles/ListArticlesIndex";
 import InitialNav from "../components/navs/InitialNav";
+import ChipGroup from "../components/navs/ChipGroup";
 
 //Material UI
 import Box from "@material-ui/core/Box";
@@ -29,6 +30,9 @@ export default function Index({ allProps }) {
       </Head>
       <Box className={classes.image}>
         <InitialNav></InitialNav>
+      </Box>
+      <Box>
+        <ChipGroup />
       </Box>
       <Box
         display="flex"
