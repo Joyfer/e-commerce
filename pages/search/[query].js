@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import Layout from "../../components/Layout";
 import SearchedArticles from "../../components/articles/SearchedArticles";
 import InitialNav from "../../components/navs/InitialNav";
+import ChipGroup from "../../components/navs/ChipGroup"
 
 //Material UI
 import Box from "@material-ui/core/Box";
@@ -34,6 +35,9 @@ export default function SearchPage({ query, allProps }) {
       </Head>
       <Box className={classes.image}>
         <InitialNav></InitialNav>
+      </Box>
+      <Box>
+        <ChipGroup chips={['nike', 'adidas', 'vans', 'converse']} />
       </Box>
       <Box
         display="flex"

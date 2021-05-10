@@ -6,7 +6,7 @@ import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
 
 const useStyles = makeStyles((theme) => ({
   button: {
-    color: theme.palette.error.main ,
+    color: "white" ,
   },
 }));
 

@@ -14,9 +14,12 @@ import {
 
 import AddCart from "../buttons/articles/AddCart";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   media: {
     height: 220,
+    [theme.breakpoints.down("sm")]: {
+      height: 260,
+    },
   },
   bodyCard: {
     height: 70,
@@ -25,7 +28,7 @@ const useStyles = makeStyles({
   actions: {
     justifyContent: "space-between",
   },
-});
+}));
 
 const ArticlesCard = ({ id, name, category, price, image }) => {
   const classes = useStyles();

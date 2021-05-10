@@ -8,24 +8,20 @@ import SelectInput from "../../components/inputs/select";
 import BuyArticle from "../../components/buttons/articles/BuyArticle";
 import AddCart from "../../components/buttons/articles/AddCart";
 import ArticleImagesView from "../../components/articles/ArticleImagesView";
-import BackButton from "../../components/buttons/navigation/BackButton";
-
 
 //Material UI
 import {
   Box,
   Paper,
   Typography,
-  Hidden,
   Grid,
   Divider,
-  Button,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-
+    marginTop: '-20px'
   },
   paper: {
     width: "90%",
@@ -37,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   image: {
-    height: "40vh",
+    height: "15vh",
     background:
       "url('https://images.unsplash.com/photo-1511556532299-8f662fc26c06?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80') center",
     position: "relative",
@@ -78,6 +74,7 @@ export default function ArticleView({ allProps }) {
       </Head>
       <Box className={classes.image}>
         <InitialNav></InitialNav>
+        </Box>
         <Box
           display="flex"
           justifyContent="center"
@@ -86,9 +83,6 @@ export default function ArticleView({ allProps }) {
           pb={3}
         >
           <Paper className={classes.paper}>
-            <Box display="flex" justifyContent="start" alignItems="center" px={1} pt={1} >
-              <BackButton />
-            </Box>
             <Grid container spacing={1}>
               <Grid item xs={12} sm={7}>
                 <ArticleImagesView images={allProps.images} />
@@ -147,7 +141,6 @@ export default function ArticleView({ allProps }) {
               </Grid>
             </Grid>
           </Paper>
-        </Box>
       </Box>
     </Layout>
   );

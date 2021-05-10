@@ -13,19 +13,21 @@ import MailIcon from "@material-ui/icons/Mail";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: "90vh",
+    marginTop: '-20px'
   },
   paper: {
     width: "90%",
     margin: "auto",
-    paddingBottom: 5,
+    position: "relative",
+    paddingBottom: 10,
     [theme.breakpoints.down("sm")]: {
       width: "96%",
     },
   },
   image: {
-    height: "40vh",
-    background: "url('https://i.imgur.com/NOPvS1X.jpg')",
+    height: "15vh",
+    background:
+      "url('https://images.unsplash.com/photo-1511556532299-8f662fc26c06?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80') center",
     position: "relative",
   },
   textCenter: {
@@ -44,57 +46,57 @@ export default function Profile() {
   return (
     <Layout>
       <Head>
-        <title>Next Shop || Perfil</title>
+        <title>Next Shop || Profile </title>
       </Head>
       <Box className={classes.image}>
         <InitialNav></InitialNav>
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          className={classes.root}
-        >
-          <Paper className={classes.paper}>
-            <Box
-              bgcolor="primary.main"
-              py={2}
-              color="white"
-              display="flex"
-              flexDirection="column"
-              alignItems="center"
-              px={4}
-            >
-              <Typography variant="h2" className={classes.textCenter}>
-                Joyfer
-              </Typography>
-              <br />
-              <Box display="flex">
-                <Hidden smDown>
-                  <MailIcon className={classes.iconMail} />
-                </Hidden>
-                <Typography variant="subtitle1" className={classes.textCenter}>
-                  <b>Correo eléctronico: </b>joyferramos@gmail.com
-                </Typography>
-              </Box>
-            </Box>
-            <Box mt={2}>
-              <Typography variant="h5" className={classes.textCenter}>
-                Carrito de compras:
+      </Box>
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        className={classes.root}
+        pb={3}
+      >
+        <Paper className={classes.paper}>
+          <Box
+         
+            py={2}
+      
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            px={4}
+          >
+            <Typography variant="h2" className={classes.textCenter}>
+              Joyfer
+            </Typography>
+            <Box display="flex">
+              <Hidden smDown>
+                <MailIcon className={classes.iconMail} />
+              </Hidden>
+              <Typography variant="subtitle1" className={classes.textCenter}>
+                <b>Correo eléctronico: </b>joyferramos@gmail.com
               </Typography>
             </Box>
-            <CartArticles></CartArticles>
-            <Box
-              display="flex"
-              justifyContent="flex-end"
-              mt={3}
-              mb={1}
-              mr={1}
-              className={classes.flexEnd}
-            >
-              <LogoutButton className={classes.logoutButton}></LogoutButton>
-            </Box>
-          </Paper>
-        </Box>
+          </Box>
+          <Box mt={2}>
+            <Typography variant="h5" className={classes.textCenter}>
+              Carrito de compras:
+            </Typography>
+          </Box>
+          <CartArticles></CartArticles>
+          <Box
+            display="flex"
+            justifyContent="flex-end"
+            mt={3}
+            mb={1}
+            mr={1}
+            className={classes.flexEnd}
+          >
+            <LogoutButton className={classes.logoutButton}></LogoutButton>
+          </Box>
+        </Paper>
       </Box>
     </Layout>
   );

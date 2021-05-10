@@ -6,32 +6,35 @@ import Box from "@material-ui/core/Box";
 const useStyles = makeStyles((theme) => ({
   divScroll: {
     overflowX: "auto",
-    minWidth: "60%",
     whiteSpace: "nowrap",
-    display: "flex",
-    justifyContent: "center",
-  },
-  margin: {
-    margin: "auto",
+    "&::-webkit-scrollbar": {
+      width: 0,
+      background: "transparent",
+    },
   },
   chip: {
     margin: "0 4px",
+    padding: 5
   },
 }));
 
-const ChipGroup = () => {
+const ChipGroup = ({ chips }) => {
   const classes = useStyles();
   return (
-    <Box display="flex" justifyContent="center" py={2}>
+    <Box display="flex" justifyContent="center" pt={4} pb={2}>
       <div className={classes.divScroll}>
-        <Link href="/search/nike" passHref>
-          <Chip
-            label="nike"
-            color="primary"
-            clickable
-            className={classes.chip}
-          />
-        </Link>
+        {chips.map((el) => {
+          return (
+            <Link href={`/search/${el}`} passHref key={el}>
+              <Chip
+                label={el}
+                color="primary"
+                clickable
+                className={classes.chip}
+              />
+            </Link>
+          );
+        })}
       </div>
     </Box>
   );

@@ -1,6 +1,6 @@
 import { Box, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
-import { element } from "prop-types";
+import BackButton from "../buttons/navigation/BackButton";
 
 import { useState } from "react";
 
@@ -36,6 +36,10 @@ const useStyles = makeStyles((theme) => ({
     overflowX: "auto",
     width: "100%",
     whiteSpace: "nowrap",
+    "&::-webkit-scrollbar": {
+      width: 0,
+      background: "transparent",
+    },
   },
 }));
 
@@ -51,6 +55,9 @@ const ArticleImagesView = ({ images }) => {
   return (
     <>
       <Box display="flex" justifyContent="center" alignItems="center">
+        <Box position="absolute" top={15} left={15}>
+        <BackButton></BackButton>
+        </Box> 
         <img src={Image} alt="" className={classes.imageMain} />
       </Box>
       <Box
