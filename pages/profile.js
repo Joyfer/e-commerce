@@ -1,4 +1,5 @@
 import Head from "next/head";
+import useSWR from "swr";
 
 //Components
 import Layout from "../components/Layout";
@@ -11,9 +12,14 @@ import { Box, Paper, Typography, Hidden } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import MailIcon from "@material-ui/icons/Mail";
 
+const getData = async (el) => {
+  const response = await fetch(`http://localhost:3000/api/articles/${el}`);
+  return await response.json();
+};
+
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: '-20px'
+    marginTop: "-20px",
   },
   paper: {
     width: "90%",
@@ -41,8 +47,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const fetcher = url => fetch(url).then(r => r.json())
+
 export default function Profile() {
   const classes = useStyles();
+  const ids = ["1", "2", "3", "4"];
+  let allProps = []
+  for (let el of ids){
+    const { data, error } = useSWR(`http://localhost:3000/api/articles/${el}`, getData(el));
+    if (data){
+      allProps = [...allProps, data]
+    }
+  }
+  
+  console.log(allProps)
+  
   return (
     <Layout>
       <Head>
@@ -60,9 +79,7 @@ export default function Profile() {
       >
         <Paper className={classes.paper}>
           <Box
-         
             py={2}
-      
             display="flex"
             flexDirection="column"
             alignItems="center"
@@ -85,7 +102,7 @@ export default function Profile() {
               Carrito de compras:
             </Typography>
           </Box>
-          <CartArticles></CartArticles>
+          <CartArticles list={allProps}></CartArticles>
           <Box
             display="flex"
             justifyContent="flex-end"

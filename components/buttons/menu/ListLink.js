@@ -8,7 +8,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import RemoveOutlinedIcon from '@material-ui/icons/RemoveOutlined';
 
 const ListLink = React.forwardRef(
-  ({ link, label, listItemIcon = <RemoveOutlinedIcon /> }, ref) => {
+  ({ link, label = "", listItemIcon = <RemoveOutlinedIcon /> }, ref) => {
     return (
       <Link href={link} passHref>
         <ListItem button ref={ref}>

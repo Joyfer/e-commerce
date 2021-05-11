@@ -6,15 +6,17 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
     marginLeft: 5,
+    marginRight: 5,
+    marginBottom: 4,
   },
 }));
 
 const LogoButton = () => {
   const classes = useStyles();
   return (
-    <Typography variant="h6" className={classes.title}>
+    <Typography variant="h5" className={classes.title}>
       <Link href="/">
-        <a>Logo</a>
+        Logo
       </Link>
     </Typography>
   );

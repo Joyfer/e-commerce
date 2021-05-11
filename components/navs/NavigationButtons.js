@@ -13,31 +13,24 @@ import LogoButton from "../buttons/navigation/Logo";
 import SearchNavbar from "./Search";
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-      flexGrow: 1,
-    },
-    menuButton: {
-      marginRight: theme.spacing(2),
-    },
-  }));
+  root: {
+    
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+}));
 
 const NavigationButtons = ({ search }) => {
-    const classes = useStyles();
+  const classes = useStyles();
   return (
-    <>
+    <Box display="flex" justifyContent="space-between" width="100%">
       <Box display="flex" alignItems="center" className={classes.root}>
         <MenuButton />
-        <LogoButton />
+        <LogoButton className={classes.menuButton} />
       </Box>
-      {search ? (
-        <Hidden smDown>
-          <SearchNavbar />
-        </Hidden>
-      ) : (
-        <></>
-      )}
       <Box display="flex">
-        <ButtonNavigationNav text="Inicio" link="/" />
+        <ButtonNavigationNav text="Inicio" link="/"  />
         <Hidden smUp>
           <ButtonIconWhite icon={<HomeIcon />} link="/" />
         </Hidden>
@@ -47,7 +40,7 @@ const NavigationButtons = ({ search }) => {
           <ButtonIconWhite icon={<ShoppingCartIcon />} link="/profile" />
         </Hidden>
       </Box>
-    </>
+    </Box>
   );
 };
 

@@ -15,7 +15,7 @@ const Footer = () => {
     <Box
       textAlign="center"
       height={100}
-      bgcolor="primary.main"
+      bgcolor="text.primary"
       color="white"
       mt={4}
       display="flex"

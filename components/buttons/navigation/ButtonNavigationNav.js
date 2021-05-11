@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles({
   button: {
     color: "white",
-    margin: "0 3px",
+    margin: "0 5px",
   },
 });
 
