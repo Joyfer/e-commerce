@@ -4,5 +4,6 @@ import object from '../../../src/object'
     const { id } = req.query
     let filter = object.articles.filter((el) => el.id === id)
     filter = filter[0]
+    res.setHeader('Content-Type', 'application/json');
     res.status(200).json(filter)
   }

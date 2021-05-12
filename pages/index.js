@@ -1,10 +1,12 @@
 import Head from "next/head";
+import { createMocks } from "node-mocks-http";
 
 //Components
 import Layout from "../components/Layout";
 import ListArticlesIndex from "../components/articles/ListArticlesIndex";
 import InitialNav from "../components/navs/InitialNav";
 import ChipGroup from "../components/navs/ChipGroup";
+import getArticles from "./api/articles/brand/[brand]";
 
 //Material UI
 import Box from "@material-ui/core/Box";
@@ -29,7 +31,7 @@ export default function Index({ allProps }) {
         <InitialNav></InitialNav>
       </Box>
       <Box>
-        <ChipGroup chips={['nike', 'adidas', 'vans', 'converse']} />
+        <ChipGroup chips={["nike", "adidas", "vans", "converse"]} />
       </Box>
       <Box
         display="flex"
@@ -79,8 +81,14 @@ export async function getStaticProps() {
 
   let search = ["nike", "adidas", "vans"];
   for (let el of search) {
-    let res = await fetch(`https://nuxt-joyfer.herokuapp.com/api/articles/brand/${el}`);
-    let newResponse = await res.json();
+    const { req, res } = createMocks({
+      method: "GET",
+      query: {
+        brand: el,
+      },
+    });
+    await getArticles(req, res);
+    const newResponse = await JSON.parse(res._getData());
     allProps = [...allProps, ...newResponse];
   }
   return {

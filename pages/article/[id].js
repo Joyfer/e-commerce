@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { createMocks } from "node-mocks-http";
 
 //Components
 import Layout from "../../components/Layout";
@@ -8,20 +9,15 @@ import SelectInput from "../../components/inputs/select";
 import BuyArticle from "../../components/buttons/articles/BuyArticle";
 import AddCart from "../../components/buttons/articles/AddCart";
 import ArticleImagesView from "../../components/articles/ArticleImagesView";
+import getArticles from "../api/articles/[id]";
 
 //Material UI
-import {
-  Box,
-  Paper,
-  Typography,
-  Grid,
-  Divider,
-} from "@material-ui/core";
+import { Box, Paper, Typography, Grid, Divider } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: '-20px'
+    marginTop: "-20px",
   },
   paper: {
     width: "90%",
@@ -74,73 +70,73 @@ export default function ArticleView({ allProps }) {
       </Head>
       <Box className={classes.image}>
         <InitialNav></InitialNav>
-        </Box>
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          className={classes.root}
-          pb={3}
-        >
-          <Paper className={classes.paper}>
-            <Grid container spacing={1}>
-              <Grid item xs={12} sm={7}>
-                <ArticleImagesView images={allProps.images} />
-              </Grid>
-              <Grid item xs={12} sm={5}>
-                <Box p={2} height="100%">
-                  <Typography variant="h3" color="initial">
-                    {allProps.name}
+      </Box>
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        className={classes.root}
+        pb={3}
+      >
+        <Paper className={classes.paper}>
+          <Grid container spacing={1}>
+            <Grid item xs={12} sm={7}>
+              <ArticleImagesView images={allProps.images} />
+            </Grid>
+            <Grid item xs={12} sm={5}>
+              <Box p={2} height="100%">
+                <Typography variant="h3" color="initial">
+                  {allProps.name}
+                </Typography>
+                <Typography
+                  variant="subtitle1"
+                  color="initial"
+                  className={classes.subtitle}
+                >
+                  Zapatos deportivos
+                </Typography>
+                <Divider className={classes.divider}></Divider>
+                <Typography variant="body1" color="initial">
+                  <b>Marca: </b>
+                  {allProps.brand}
+                </Typography>
+                <Box display="flex" alignItems="center">
+                  <Typography variant="body1" color="initial">
+                    <b>Tallas:</b>
+                  </Typography>
+                  <SelectInput />
+                </Box>
+                <Box display="flex" alignItems="center">
+                  <Typography variant="body1" color="initial">
+                    <b>Precio:</b>
                   </Typography>
                   <Typography
-                    variant="subtitle1"
-                    color="initial"
-                    className={classes.subtitle}
+                    className={classes.marginLeft}
+                    variant="h6"
+                    color="secondary"
                   >
-                    Zapatos deportivos
+                    {allProps.price}$
                   </Typography>
-                  <Divider className={classes.divider}></Divider>
-                  <Typography variant="body1" color="initial">
-                    <b>Marca: </b>
-                    {allProps.brand}
-                  </Typography>
-                  <Box display="flex" alignItems="center">
-                    <Typography variant="body1" color="initial">
-                      <b>Tallas:</b>
-                    </Typography>
-                    <SelectInput />
-                  </Box>
-                  <Box display="flex" alignItems="center">
-                    <Typography variant="body1" color="initial">
-                      <b>Precio:</b>
-                    </Typography>
-                    <Typography
-                      className={classes.marginLeft}
-                      variant="h6"
-                      color="secondary"
-                    >
-                      {allProps.price}$
-                    </Typography>
-                  </Box>
-                  <Box
-                    className={classes.marginButtons}
-                    display="flex"
-                    alignItems="flex-end"
-                    justifyContent="start"
-                  >
-                    <Grid container spacing={1}>
-                      <Grid item xs={12} md={6}>
-                        <BuyArticle />
-                      </Grid>
-                      <Grid item xs={12} md={6}>
-                        <AddCart />
-                      </Grid>
-                    </Grid>
-                  </Box>
                 </Box>
-              </Grid>
+                <Box
+                  className={classes.marginButtons}
+                  display="flex"
+                  alignItems="flex-end"
+                  justifyContent="start"
+                >
+                  <Grid container spacing={1}>
+                    <Grid item xs={12} md={6}>
+                      <BuyArticle />
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                      <AddCart />
+                    </Grid>
+                  </Grid>
+                </Box>
+              </Box>
             </Grid>
-          </Paper>
+          </Grid>
+        </Paper>
       </Box>
     </Layout>
   );
@@ -158,8 +154,14 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   // Get query from params
   let id = params.id;
-  const res = await fetch(`https://nuxt-joyfer.herokuapp.com/api/articles/${id}`);
-  const allProps = await res.json();
+  const { req, res } = createMocks({
+    method: "GET",
+    query: {
+      id: id,
+    },
+  });
+  await getArticles(req, res);
+  const allProps = await JSON.parse(res._getData());
   return {
     props: {
       allProps,

@@ -13,11 +13,6 @@ import { Box, Paper, Typography, Hidden } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import MailIcon from "@material-ui/icons/Mail";
 
-const getData = async (el) => {
-  const response = await fetch(`https://nuxt-joyfer.herokuapp.com/api/articles/${el}`);
-  return await response.json();
-};
-
 const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: "-20px",
@@ -45,7 +40,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const fetcher = (url) => fetch(url).then((r) => r.json());
+const getData = async (el) => {
+  const response = await fetch(
+    `https://nuxt-joyfer.herokuapp.com/api/articles/${el}`
+  );
+  return await response.json();
+};
 
 export default function Profile() {
   const classes = useStyles();
@@ -53,15 +53,13 @@ export default function Profile() {
   let allProps = [];
   for (let el of ids) {
     const { data, error } = useSWR(
-      `http://localhost:3000/api/articles/${el}`,
+      `https://nuxt-joyfer.herokuapp.com/api/articles/${el}`,
       getData(el)
     );
     if (data) {
       allProps = [...allProps, data];
     }
   }
-
-  console.log(allProps);
 
   return (
     <Layout>
