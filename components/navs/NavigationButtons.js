@@ -31,7 +31,7 @@ const NavigationButtons = ({ search }) => {
       </Box>
       <Box display="flex">
         <ButtonNavigationNav text="Inicio" link="/"  />
-        <Hidden smUp>
+        <Hidden mdUp>
           <ButtonIconWhite icon={<HomeIcon />} link="/" />
         </Hidden>
         <MenuBrands />

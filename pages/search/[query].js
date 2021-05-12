@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import Layout from "../../components/Layout";
 import SearchedArticles from "../../components/articles/SearchedArticles";
 import InitialNav from "../../components/navs/InitialNav";
-import ChipGroup from "../../components/navs/ChipGroup"
+import ChipGroup from "../../components/navs/ChipGroup";
 
 //Material UI
 import Box from "@material-ui/core/Box";
@@ -17,11 +17,12 @@ const useStyles = makeStyles({
   },
   image: {
     height: "20vh",
-    background: "url('https://i.imgur.com/NOPvS1X.jpg')",
+    background:
+      "url('https://images.unsplash.com/photo-1511556532299-8f662fc26c06?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80')",
   },
 });
 
-export default function SearchPage({ query, allProps }) {
+export default function SearchPage({ brand, allProps }) {
   const classes = useStyles();
   const router = useRouter();
 
@@ -31,13 +32,13 @@ export default function SearchPage({ query, allProps }) {
   return (
     <Layout>
       <Head>
-        <title>Next Shop || Search: {query}</title>
+        <title>Next Shop || Search: {brand}</title>
       </Head>
       <Box className={classes.image}>
         <InitialNav></InitialNav>
       </Box>
       <Box>
-        <ChipGroup chips={['nike', 'adidas', 'vans', 'converse']} />
+        <ChipGroup chips={["nike", "adidas", "vans", "converse"]} />
       </Box>
       <Box
         display="flex"
@@ -46,32 +47,21 @@ export default function SearchPage({ query, allProps }) {
         alignItems="center"
         className={classes.root}
       >
-        <SearchedArticles searchedQuery={query} cardInformation={allProps} />
+        <SearchedArticles searchedQuery={brand} cardInformation={allProps} />
       </Box>
     </Layout>
   );
 }
 
-export async function getStaticPaths() {
-  return {
-    paths: [
-      { params: { query: "Nike" } }, // Pre-render this path on build time
-    ],
-    fallback: true, // Default true for fallback pages
-  };
-}
-
-export async function getStaticProps({ params }) {
-  // Get query from params
-  let query = params.query.toLowerCase();
-  const res = await fetch(`http://localhost:3000/api/articles/brand/${query}`);
+export async function getServerSideProps({ query }) {
+  // Get query from context
+  let brand = query.query.toLowerCase();
+  const res = await fetch(`http://localhost:3000/api/articles/brand/${brand}`);
   const allProps = await res.json();
-
   return {
     props: {
-      query,
+      brand,
       allProps,
-    },
-    revalidate: 60, // In seconds
+    }, // will be passed to the page component as props
   };
 }

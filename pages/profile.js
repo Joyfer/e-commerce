@@ -6,6 +6,7 @@ import Layout from "../components/Layout";
 import InitialNav from "../components/navs/InitialNav";
 import CartArticles from "../components/articles/CartArticles";
 import LogoutButton from "../components/buttons/session/LogoutButton";
+import BuyArticle from "../components/buttons/articles/BuyArticle";
 
 //Material UI
 import { Box, Paper, Typography, Hidden } from "@material-ui/core";
@@ -39,29 +40,29 @@ const useStyles = makeStyles((theme) => ({
   textCenter: {
     textAlign: "center",
   },
-  logoutButton: {
-    alignSelf: "end",
-  },
   iconMail: {
     marginRight: 6,
   },
 }));
 
-const fetcher = url => fetch(url).then(r => r.json())
+const fetcher = (url) => fetch(url).then((r) => r.json());
 
 export default function Profile() {
   const classes = useStyles();
   const ids = ["1", "2", "3", "4"];
-  let allProps = []
-  for (let el of ids){
-    const { data, error } = useSWR(`http://localhost:3000/api/articles/${el}`, getData(el));
-    if (data){
-      allProps = [...allProps, data]
+  let allProps = [];
+  for (let el of ids) {
+    const { data, error } = useSWR(
+      `http://localhost:3000/api/articles/${el}`,
+      getData(el)
+    );
+    if (data) {
+      allProps = [...allProps, data];
     }
   }
-  
-  console.log(allProps)
-  
+
+  console.log(allProps);
+
   return (
     <Layout>
       <Head>
@@ -111,7 +112,10 @@ export default function Profile() {
             mr={1}
             className={classes.flexEnd}
           >
-            <LogoutButton className={classes.logoutButton}></LogoutButton>
+            <Box mx={1}>
+              <LogoutButton />
+            </Box>
+            <BuyArticle />
           </Box>
         </Paper>
       </Box>
