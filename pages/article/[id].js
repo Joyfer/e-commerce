@@ -146,6 +146,15 @@ export default function ArticleView({ allProps }) {
   );
 }
 
+export async function getStaticPaths() {
+  return {
+    paths: [
+      { params: { id: "1" } }, // Pre-render this path on build time
+    ],
+    fallback: true, // Default true for fallback pages
+  };
+}
+
 export async function getStaticProps({ params }) {
   // Get query from params
   let id = params.id;
