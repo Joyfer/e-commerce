@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { createMocks } from "node-mocks-http";
 
 //Components
 import Layout from "../../components/Layout";
@@ -9,7 +8,7 @@ import SelectInput from "../../components/inputs/select";
 import BuyArticle from "../../components/buttons/articles/BuyArticle";
 import AddCart from "../../components/buttons/articles/AddCart";
 import ArticleImagesView from "../../components/articles/ArticleImagesView";
-import getArticles from "../api/articles/[id]";
+import object from "../../src/object";
 
 //Material UI
 import { Box, Paper, Typography, Grid, Divider } from "@material-ui/core";
@@ -146,10 +145,7 @@ export async function getStaticPaths() {
   return {
     paths: [
       { params: { id: "1" } },
-      { params: { id: "2" } },
-      { params: { id: "3" } },
-      { params: { id: "4" } },
- // Pre-render this path on build time
+      // Pre-render this path on build time
     ],
     fallback: true, // Default true for fallback pages
   };
@@ -157,15 +153,10 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   // Get query from params
-  let id = params.id;
-  const { req, res } = createMocks({
-    method: "GET",
-    query: {
-      id: id,
-    },
-  });
-  await getArticles(req, res);
-  const allProps = await JSON.parse(res._getData());
+  let id = params.id,
+    allProps,
+    filter = object.articles.filter((el) => el.id === id);
+  allProps = filter[0];
   return {
     props: {
       allProps,

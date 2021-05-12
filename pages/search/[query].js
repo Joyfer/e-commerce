@@ -1,13 +1,12 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { createMocks } from "node-mocks-http";
 
 //Components
 import Layout from "../../components/Layout";
 import SearchedArticles from "../../components/articles/SearchedArticles";
 import InitialNav from "../../components/navs/InitialNav";
 import ChipGroup from "../../components/navs/ChipGroup";
-import getArticles from "../api/articles/brand/[brand]";
+import object from "../../src/object";
 
 //Material UI
 import Box from "@material-ui/core/Box";
@@ -57,14 +56,7 @@ export default function SearchPage({ brand, allProps }) {
 export async function getServerSideProps({ query }) {
   // Get query from context
   let brand = query.query.toLowerCase();
-  const { req, res } = createMocks({
-    method: "GET",
-    query: {
-      brand: brand,
-    },
-  });
-  await getArticles(req, res);
-  const allProps = await JSON.parse(res._getData());
+  let allProps = object.articles.filter((el) => el.brand === brand);
   return {
     props: {
       brand,

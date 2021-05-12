@@ -1,5 +1,4 @@
 import Head from "next/head";
-import useSWR from "swr";
 
 //Components
 import Layout from "../components/Layout";
@@ -7,6 +6,7 @@ import InitialNav from "../components/navs/InitialNav";
 import CartArticles from "../components/articles/CartArticles";
 import LogoutButton from "../components/buttons/session/LogoutButton";
 import BuyArticle from "../components/buttons/articles/BuyArticle";
+import object from "../src/object";
 
 //Material UI
 import { Box, Paper, Typography, Hidden } from "@material-ui/core";
@@ -40,26 +40,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const getData = async (el) => {
-  const response = await fetch(
-    `https://nuxt-joyfer.herokuapp.com/api/articles/${el}`
-  );
-  return await response.json();
-};
+const getData = () => {
+  let allElements = []
+  const ids = ["1", "2", "3", "4"];
+    for (let searchedId of ids) {
+      let filter = object.articles.filter((el) => el.id === searchedId);
+      allElements = [...allElements, ...filter];
+    }
+    return(allElements)
+}
 
 export default function Profile() {
   const classes = useStyles();
-  const ids = ["1", "2", "3", "4"];
-  let allProps = [];
-  for (let el of ids) {
-    const { data, error } = useSWR(
-      `https://nuxt-joyfer.herokuapp.com/api/articles/${el}`,
-      getData(el)
-    );
-    if (data) {
-      allProps = [...allProps, data];
-    }
-  }
+  const allProps = getData();
 
   return (
     <Layout>

@@ -1,12 +1,11 @@
 import Head from "next/head";
-import { createMocks } from "node-mocks-http";
 
 //Components
 import Layout from "../components/Layout";
 import ListArticlesIndex from "../components/articles/ListArticlesIndex";
 import InitialNav from "../components/navs/InitialNav";
 import ChipGroup from "../components/navs/ChipGroup";
-import getArticles from "./api/articles/brand/[brand]";
+import object from "../src/object";
 
 //Material UI
 import Box from "@material-ui/core/Box";
@@ -80,16 +79,9 @@ export async function getStaticProps() {
   let allProps = [];
 
   let search = ["nike", "adidas", "vans"];
-  for (let el of search) {
-    const { req, res } = createMocks({
-      method: "GET",
-      query: {
-        brand: el,
-      },
-    });
-    await getArticles(req, res);
-    const newResponse = await JSON.parse(res._getData());
-    allProps = [...allProps, ...newResponse];
+  for (let brandSearch of search) {
+    let filter = object.articles.filter((el) => el.brand === brandSearch);
+    allProps = [...allProps, ...filter];
   }
   return {
     props: {
