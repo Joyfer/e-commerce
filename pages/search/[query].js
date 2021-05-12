@@ -55,7 +55,7 @@ export default function SearchPage({ brand, allProps }) {
 export async function getServerSideProps({ query }) {
   // Get query from context
   let brand = query.query.toLowerCase();
-  const res = await fetch(`http://localhost:3000/api/articles/brand/${brand}`);
+  const res = await fetch(`https://nuxt-joyfer.herokuapp.com/api/articles/brand/${brand}`);
   const allProps = await res.json();
   return {
     props: {

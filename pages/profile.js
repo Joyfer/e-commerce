@@ -14,7 +14,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import MailIcon from "@material-ui/icons/Mail";
 
 const getData = async (el) => {
-  const response = await fetch(`http://localhost:3000/api/articles/${el}`);
+  const response = await fetch(`https://nuxt-joyfer.herokuapp.com/api/articles/${el}`);
   return await response.json();
 };
 

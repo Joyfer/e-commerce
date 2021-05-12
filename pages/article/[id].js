@@ -158,7 +158,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   // Get query from params
   let id = params.id;
-  const res = await fetch(`http://localhost:3000/api/articles/${id}`);
+  const res = await fetch(`https://nuxt-joyfer.herokuapp.com/api/articles/${id}`);
   const allProps = await res.json();
   return {
     props: {
