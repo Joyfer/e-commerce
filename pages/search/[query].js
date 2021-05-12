@@ -45,7 +45,6 @@ export default function SearchPage({ brand, allProps }) {
         flexDirection="column"
         justifyContent="start"
         alignItems="center"
-        className={classes.root}
       >
         <SearchedArticles searchedQuery={brand} cardInformation={allProps} />
       </Box>

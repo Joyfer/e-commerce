@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ArticlesCard = ({ id, name, category, price, image }) => {
+const ArticleCard = ({ id, name, category, price, image }) => {
   const classes = useStyles();
   return (
     <Grid item xs={12} sm={6} md={4}>
@@ -63,4 +63,4 @@ const ArticlesCard = ({ id, name, category, price, image }) => {
   );
 };
 
-export default ArticlesCard;
+export default ArticleCard;

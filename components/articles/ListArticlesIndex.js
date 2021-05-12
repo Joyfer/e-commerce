@@ -1,8 +1,8 @@
-import ArticleCard from "./ArticleCard";
 import ShowMore from "../buttons/articles/ShowMore";
+import ArticlesCardsList from "./ArticlesCardList";
 
 //Material UI
-import { Grid, Box, Typography } from "@material-ui/core";
+import { Box, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -19,15 +19,12 @@ const useStyles = makeStyles((theme) => ({
       paddingRight: 15,
       paddingLeft: 15,
     },
-    margin: "10px 0 10px 0",
+    margin: "10px 0",
   },
   subtitle: {
     paddingBottom: 12,
     border: 0,
     borderBottom: `thick solid ${theme.palette.primary.main}`,
-  },
-  grid: {
-    marginTop: 20,
   },
 }));
 
@@ -35,6 +32,7 @@ const ListArticlesIndex = ({ title, subtitle, link, cardInformation }) => {
   const classes = useStyles();
   return (
     <Box width="100%" className={classes.root}>
+      <Box mb={4}>
       <Typography
         className={classes.title}
         variant="h2"
@@ -51,20 +49,8 @@ const ListArticlesIndex = ({ title, subtitle, link, cardInformation }) => {
       >
         {subtitle}
       </Typography>
-      <Grid container spacing={2} className={classes.grid}>
-        {cardInformation.map(({id, name, price, images}) => {
-          return (
-            <ArticleCard
-              key={id}
-              image={images[0]}
-              name={name}
-              category="Zapatillas deportivas"
-              price={price}
-              id={id}
-            ></ArticleCard>
-          );
-        })}
-      </Grid>
+      </Box>
+      <ArticlesCardsList cardInformation={cardInformation} />
       <ShowMore link={link} />
     </Box>
   );
