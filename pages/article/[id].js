@@ -145,7 +145,11 @@ export default function ArticleView({ allProps }) {
 export async function getStaticPaths() {
   return {
     paths: [
-      { params: { id: "1" } }, // Pre-render this path on build time
+      { params: { id: "1" } },
+      { params: { id: "2" } },
+      { params: { id: "3" } },
+      { params: { id: "4" } },
+ // Pre-render this path on build time
     ],
     fallback: true, // Default true for fallback pages
   };
