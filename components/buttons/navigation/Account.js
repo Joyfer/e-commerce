@@ -51,7 +51,7 @@ const AccountButton = (props) => {
       >
         <MenuLink onChildClick={handleClose} link="/profile" label="Perfil" />
         <MenuItem onClick={handleClose} className={classes.logout}>
-          Logout
+          Cerrar
         </MenuItem>
       </MuiMenu>
     </>
