@@ -42,7 +42,7 @@ export default function Index({ allProps }) {
           {
             title: "Lo más vendido",
             subtitle: "Descubre lo que la gente ama",
-            link: "Top",
+            link: "Adidas",
             cardInformation: "adidas",
           },
           {

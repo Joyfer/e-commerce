@@ -4,28 +4,28 @@ import Link from "@material-ui/core/Link";
 
 const useStyles = makeStyles((theme) => ({
   bottom: {
-    position: 'absolute',
-    bottom: 0
+    position: "absolute",
+    bottom: 0,
   },
 }));
 
 const Footer = () => {
   const classes = useStyles();
   return (
-    <Box
-      textAlign="center"
-      height={100}
-      bgcolor="text.primary"
-      color="white"
-      mt={4}
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-    >
-      <Link href="#" color="inherit" variant="body1">
-        Next e-commerce || Joyfer || I hope you enjoy
-      </Link>
-    </Box>
+      <Box
+        textAlign="center"
+        height={100}
+        bgcolor="text.primary"
+        color="white"
+        mt={4}
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <Link href="https://joyfer-web.netlify.app/#/coleccion/4" color="inherit" variant="body1" target="_blank">
+          Next e-commerce || Joyfer || I hope you enjoy
+        </Link>
+      </Box>
   );
 };
 

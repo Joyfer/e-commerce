@@ -46,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
   },
   marginLeft: {
     marginLeft: 7,
+    textTransform: "uppercase",
   },
   marginButtons: {
     marginTop: "60%",
@@ -95,10 +96,14 @@ export default function ArticleView({ allProps }) {
                   Zapatos deportivos
                 </Typography>
                 <Divider className={classes.divider}></Divider>
+                <Box display="flex" alignItems="center">
                 <Typography variant="body1" color="initial">
                   <b>Marca: </b>
+                </Typography>
+                <Typography variant="body1" color="initial" className={classes.marginLeft}>
                   {allProps.brand}
                 </Typography>
+                </Box>
                 <Box display="flex" alignItems="center">
                   <Typography variant="body1" color="initial">
                     <b>Tallas:</b>

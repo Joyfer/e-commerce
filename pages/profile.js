@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
 
 const getData = () => {
   let allElements = []
-  const ids = ["1", "2", "3", "4"];
+  const ids = ["1", "2", "3", "4", "5"];
     for (let searchedId of ids) {
       let filter = object.articles.filter((el) => el.id === searchedId);
       allElements = [...allElements, ...filter];

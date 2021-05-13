@@ -42,6 +42,16 @@ let object = {
         "https://images.unsplash.com/photo-1553981834-a23f5b69e3ec?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
       ],
     },
+    {
+      id: "5",
+      name: "Converse All Star",
+      brand: "converse",
+      price: 260,
+      images: [
+        "https://images.unsplash.com/photo-1556048219-bb6978360b84?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80",
+        "https://images.unsplash.com/photo-1542280756-74b2f55e73ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80"
+     ],
+    },
   ],
 };
 
