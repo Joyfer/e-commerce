@@ -97,12 +97,16 @@ export default function ArticleView({ allProps }) {
                 </Typography>
                 <Divider className={classes.divider}></Divider>
                 <Box display="flex" alignItems="center">
-                <Typography variant="body1" color="initial">
-                  <b>Marca: </b>
-                </Typography>
-                <Typography variant="body1" color="initial" className={classes.marginLeft}>
-                  {allProps.brand}
-                </Typography>
+                  <Typography variant="body1" color="initial">
+                    <b>Marca: </b>
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    color="initial"
+                    className={classes.marginLeft}
+                  >
+                    {allProps.brand}
+                  </Typography>
                 </Box>
                 <Box display="flex" alignItems="center">
                   <Typography variant="body1" color="initial">
