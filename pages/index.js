@@ -7,6 +7,8 @@ import InitialNav from "../components/navs/InitialNav";
 import ChipGroup from "../components/navs/ChipGroup";
 import object from "../src/object";
 
+import SectionLayout from "../components/SectionLayout";
+
 //Material UI
 import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
@@ -32,45 +34,47 @@ export default function Index({ allProps }) {
       <Box>
         <ChipGroup chips={["nike", "adidas", "vans", "converse"]} />
       </Box>
-      <Box
-        display="flex"
-        flexDirection="column"
-        justifyContent="start"
-        alignItems="center"
-      >
-        {[
-          {
-            title: "Lo más vendido",
-            subtitle: "Descubre lo que la gente ama",
-            link: "Adidas",
-            cardInformation: "adidas",
-          },
-          {
-            title: "Nike",
-            subtitle: "Lo mejor de Nike",
-            link: "Nike",
-            cardInformation: "nike",
-          },
-          {
-            title: "Vans",
-            subtitle: "Lo mejor de Vans",
-            link: "Vans",
-            cardInformation: "vans",
-          },
-        ].map(({ title, subtitle, link, cardInformation }, index) => {
-          return (
-            <ListArticlesIndex
-              key={index}
-              title={title}
-              subtitle={subtitle}
-              link={link}
-              cardInformation={allProps.filter(
-                (el) => el.brand === cardInformation
-              )}
-            ></ListArticlesIndex>
-          );
-        })}
-      </Box>
+      <SectionLayout>
+        <Box
+          display="flex"
+          flexDirection="column"
+          justifyContent="start"
+          alignItems="center"
+        >
+          {[
+            {
+              title: "Lo más vendido",
+              subtitle: "Descubre lo que la gente ama",
+              link: "Adidas",
+              cardInformation: "adidas",
+            },
+            {
+              title: "Nike",
+              subtitle: "Lo mejor de Nike",
+              link: "Nike",
+              cardInformation: "nike",
+            },
+            {
+              title: "Vans",
+              subtitle: "Lo mejor de Vans",
+              link: "Vans",
+              cardInformation: "vans",
+            },
+          ].map(({ title, subtitle, link, cardInformation }, index) => {
+            return (
+              <ListArticlesIndex
+                key={index}
+                title={title}
+                subtitle={subtitle}
+                link={link}
+                cardInformation={allProps.filter(
+                  (el) => el.brand === cardInformation
+                )}
+              ></ListArticlesIndex>
+            );
+          })}
+        </Box>
+      </SectionLayout>
     </Layout>
   );
 }

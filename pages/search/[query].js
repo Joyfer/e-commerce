@@ -7,6 +7,7 @@ import SearchedArticles from "../../components/articles/SearchedArticles";
 import InitialNav from "../../components/navs/InitialNav";
 import ChipGroup from "../../components/navs/ChipGroup";
 import object from "../../src/object";
+import SectionLayout from "../../components/SectionLayout";
 
 //Material UI
 import Box from "@material-ui/core/Box";
@@ -38,17 +39,19 @@ export default function SearchPage({ brand, allProps }) {
       <Box className={classes.image}>
         <InitialNav></InitialNav>
       </Box>
-      <Box>
-        <ChipGroup chips={["nike", "adidas", "vans", "converse"]} />
-      </Box>
-      <Box
-        display="flex"
-        flexDirection="column"
-        justifyContent="start"
-        alignItems="center"
-      >
-        <SearchedArticles searchedQuery={brand} cardInformation={allProps} />
-      </Box>
+      <SectionLayout>
+        <Box>
+          <ChipGroup chips={["nike", "adidas", "vans", "converse"]} />
+        </Box>
+        <Box
+          display="flex"
+          flexDirection="column"
+          justifyContent="start"
+          alignItems="center"
+        >
+          <SearchedArticles searchedQuery={brand} cardInformation={allProps} />
+        </Box>
+      </SectionLayout>
     </Layout>
   );
 }

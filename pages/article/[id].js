@@ -9,6 +9,7 @@ import BuyArticle from "../../components/buttons/articles/BuyArticle";
 import AddCart from "../../components/buttons/articles/AddCart";
 import ArticleImagesView from "../../components/articles/ArticleImagesView";
 import object from "../../src/object";
+import SectionLayout from "../../components/SectionLayout";
 
 //Material UI
 import { Box, Paper, Typography, Grid, Divider } from "@material-ui/core";
@@ -71,87 +72,93 @@ export default function ArticleView({ allProps }) {
       <Box className={classes.image}>
         <InitialNav></InitialNav>
       </Box>
-      <Box
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        className={classes.root}
-        pb={3}
-      >
-        <Paper className={classes.paper}>
-          <Grid container spacing={1}>
-            <Grid item xs={12} sm={7}>
-              <ArticleImagesView images={allProps.images} />
-            </Grid>
-            <Grid item xs={12} sm={5}>
-              <Box p={2} height="100%">
-                <Typography variant="h3" color="initial">
-                  {allProps.name}
-                </Typography>
-                <Typography
-                  variant="subtitle1"
-                  color="initial"
-                  className={classes.subtitle}
-                >
-                  Zapatos deportivos
-                </Typography>
-                <Divider className={classes.divider}></Divider>
-                {/* here */}
-                <Box display="flex" flexDirection="column" justifyContent="space-between">
-                  <div>
-                    <Box display="flex" alignItems="center">
-                      <Typography variant="body1" color="initial">
-                        <b>Marca: </b>
-                      </Typography>
-                      <Typography
-                        variant="body1"
-                        color="initial"
-                        className={classes.marginLeft}
+      <SectionLayout>
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          className={classes.root}
+          pb={3}
+        >
+          <Paper className={classes.paper}>
+            <Grid container spacing={1}>
+              <Grid item xs={12} sm={7}>
+                <ArticleImagesView images={allProps.images} />
+              </Grid>
+              <Grid item xs={12} sm={5}>
+                <Box p={2} height="100%">
+                  <Typography variant="h3" color="initial">
+                    {allProps.name}
+                  </Typography>
+                  <Typography
+                    variant="subtitle1"
+                    color="initial"
+                    className={classes.subtitle}
+                  >
+                    Zapatos deportivos
+                  </Typography>
+                  <Divider className={classes.divider}></Divider>
+                  {/* here */}
+                  <Box
+                    display="flex"
+                    flexDirection="column"
+                    justifyContent="space-between"
+                  >
+                    <div>
+                      <Box display="flex" alignItems="center">
+                        <Typography variant="body1" color="initial">
+                          <b>Marca: </b>
+                        </Typography>
+                        <Typography
+                          variant="body1"
+                          color="initial"
+                          className={classes.marginLeft}
+                        >
+                          {allProps.brand}
+                        </Typography>
+                      </Box>
+                      <Box display="flex" alignItems="center">
+                        <Typography variant="body1" color="initial">
+                          <b>Tallas:</b>
+                        </Typography>
+                        <SelectInput />
+                      </Box>
+                      <Box display="flex" alignItems="center">
+                        <Typography variant="body1" color="initial">
+                          <b>Precio:</b>
+                        </Typography>
+                        <Typography
+                          className={classes.marginLeft}
+                          variant="h6"
+                          color="secondary"
+                        >
+                          {allProps.price}$
+                        </Typography>
+                      </Box>
+                    </div>
+                    <div>
+                      <Box
+                        display="flex"
+                        alignItems="flex-end"
+                        justifyContent="start"
                       >
-                        {allProps.brand}
-                      </Typography>
-                    </Box>
-                    <Box display="flex" alignItems="center">
-                      <Typography variant="body1" color="initial">
-                        <b>Tallas:</b>
-                      </Typography>
-                      <SelectInput />
-                    </Box>
-                    <Box display="flex" alignItems="center">
-                      <Typography variant="body1" color="initial">
-                        <b>Precio:</b>
-                      </Typography>
-                      <Typography
-                        className={classes.marginLeft}
-                        variant="h6"
-                        color="secondary"
-                      >
-                        {allProps.price}$
-                      </Typography>
-                    </Box>
-                  </div>
-                  <div>
-                    <Box
-                      display="flex"
-                      alignItems="flex-end"
-                      justifyContent="start"
-                    >
-                      <Grid container spacing={1}>
-                        <Grid item xs={12} md={6}>
-                          <BuyArticle />
+                        <Grid container spacing={1}>
+                          <Grid item xs={12} md={6}>
+                            <BuyArticle />
+                          </Grid>
+                          <Grid item xs={12} md={6}>
+                            <AddCart />
+                          </Grid>
                         </Grid>
-                        <Grid item xs={12} md={6}>
-                          <AddCart />
-                        </Grid>
-                      </Grid>
-                    </Box>
-                  </div>
+                      </Box>
+                    </div>
+                  </Box>
                 </Box>
-              </Box>
+              </Grid>
             </Grid>
-          </Grid>
-        </Paper>
-      </Box>
+          </Paper>
+        </Box>
+      </SectionLayout>
     </Layout>
   );
 }
