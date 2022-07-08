@@ -34,7 +34,7 @@ const ArticleCard = ({ id, name, category, price, image }) => {
   const classes = useStyles();
   return (
     <Grid item xs={12} sm={6} md={4}>
-      <Card className={classes.root} elevation={7}>
+      <Card className={classes.root} elevation={4}>
         <Link href={`/article/${id}`}>
           <CardActionArea>
             <CardMedia
