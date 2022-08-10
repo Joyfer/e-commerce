@@ -1,7 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 import { Box, Typography } from "@material-ui/core";
-import ArticlesCardsList from "./ArticlesCardList";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,7 +39,6 @@ const SearchedArticles = ({ searchedQuery, cardInformation }) => {
           {searchedQuery}
         </Typography>
       </Box>
-      <ArticlesCardsList cardInformation={cardInformation} />
     </Box>
   );
 };

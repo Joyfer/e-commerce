@@ -10,11 +10,20 @@ const useStyles = makeStyles(() => ({
   list: {
     display: "flex",
     width: "100%",
+    overflow: "auto",
     position: "absolute",
-    left: 0,
+    flex: '1 1 0px',
+    paddingBottom: "20px",
+    gap: '1rem',
     "&::-webkit-scrollbar": {
       display: "none",
     },
+  },
+  bookCover: {
+    display: "flex",
+    alignItems: "center",
+    flexDirection: "column",
+    justifyContent: "space-between",
   },
 }));
 
@@ -32,7 +41,7 @@ const ArticleCard = ({ cardInformation }) => {
     return cardInformation.map((el) => {
       return (
         <Grid item sm={6} md={4}>
-          <ItemCard itemInfo={el} key={el.id}></ItemCard>
+          <ItemCard itemInfo={el} key={el.id} className={classes.bookCover}></ItemCard>
         </Grid>
       );
     });

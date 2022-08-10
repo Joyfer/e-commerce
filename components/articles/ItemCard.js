@@ -9,7 +9,7 @@ import {
   CardActions,
   CardContent,
   CardMedia,
-  Typography
+  Typography,
 } from "@material-ui/core";
 
 import AddCart from "../buttons/articles/AddCart";
@@ -35,25 +35,31 @@ const ItemCard = ({ itemInfo }) => {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root} elevation={3}>
-      <Link href={`/article/${id}`}>
-        <CardActionArea>
-          <CardMedia className={classes.media} image={images[0]} title={name} />
-          <CardContent className={classes.bodyCard}>
-            <Typography variant="h5">{name}</Typography>
-            <Typography variant="body2" color="textSecondary">
-              {category}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-      </Link>
-      <CardActions className={classes.actions}>
-        <AddCart></AddCart>
-        <Typography variant="body1" color="secondary">
-          {price}$
-        </Typography>
-      </CardActions>
-    </Card>
+    <div className={classes.root}>
+      <Card elevation={3}>
+        <Link href={`/article/${id}`}>
+          <CardActionArea>
+            <CardMedia
+              className={classes.media}
+              image={images[0]}
+              title={name}
+            />
+            <CardContent className={classes.bodyCard}>
+              <Typography variant="h5">{name}</Typography>
+              <Typography variant="body2" color="textSecondary">
+                {category}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Link>
+        <CardActions className={classes.actions}>
+          <AddCart></AddCart>
+          <Typography variant="body1" color="secondary">
+            {price}$
+          </Typography>
+        </CardActions>
+      </Card>
+    </div>
   );
 };
 
