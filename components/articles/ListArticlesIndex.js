@@ -1,9 +1,11 @@
 import ShowMore from "../buttons/articles/ShowMore";
-import ArticlesCardsList from "./ArticlesCardList";
 
 //Material UI
 import { Box, Typography } from "@material-ui/core";
+
 import { makeStyles } from "@material-ui/core/styles";
+
+import ArticleCard from "./ArticleCard";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,24 +23,24 @@ const ListArticlesIndex = ({ title, subtitle, link, cardInformation }) => {
   return (
     <Box width="100%" className={classes.root}>
       <Box mb={4}>
-      <Typography
-        className={classes.title}
-        variant="h2"
-        color="initial"
-        align="center"
-      >
-        {title}
-      </Typography>
-      <Typography
-        className={classes.subtitle}
-        variant="subtitle1"
-        color="initial"
-        align="center"
-      >
-        {subtitle}
-      </Typography>
+        <Typography
+          className={classes.title}
+          variant="h2"
+          color="initial"
+          align="center"
+        >
+          {title}
+        </Typography>
+        <Typography
+          className={classes.subtitle}
+          variant="subtitle1"
+          color="initial"
+          align="center"
+        >
+          {subtitle}
+        </Typography>
       </Box>
-      <ArticlesCardsList cardInformation={cardInformation} />
+      <ArticleCard cardInformation={cardInformation}></ArticleCard>
       <ShowMore link={link} />
     </Box>
   );

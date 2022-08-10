@@ -1,65 +1,54 @@
+import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
-
 //Material UI
-import { makeStyles } from "@material-ui/core/styles";
-import {
-  Card,
-  CardActionArea,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Typography,
-  Grid,
-} from "@material-ui/core";
+import { Grid, Box, useMediaQuery, makeStyles } from "@material-ui/core";
+import { useTheme } from "@material-ui/core/styles";
 
-import AddCart from "../buttons/articles/AddCart";
+import ItemCard from "./ItemCard";
 
-const useStyles = makeStyles((theme) => ({
-  media: {
-    height: 220,
-    [theme.breakpoints.down("sm")]: {
-      height: 260,
+const useStyles = makeStyles(() => ({
+  list: {
+    display: "flex",
+    width: "100%",
+    position: "absolute",
+    left: 0,
+    "&::-webkit-scrollbar": {
+      display: "none",
     },
-  },
-  bodyCard: {
-    height: 70,
-    paddingTop: 9,
-  },
-  actions: {
-    justifyContent: "space-between",
   },
 }));
 
-const ArticleCard = ({ id, name, category, price, image }) => {
+const ArticleCard = ({ cardInformation }) => {
+  const theme = useTheme();
   const classes = useStyles();
+
+  const lessThanSmall = useMediaQuery(theme.breakpoints.down("xs"));
+
+  if (lessThanSmall) {
+    console.log(cardInformation);
+  }
+
+  const returnListCard = () => {
+    return cardInformation.map((el) => {
+      return (
+        <Grid item sm={6} md={4}>
+          <ItemCard itemInfo={el} key={el.id}></ItemCard>
+        </Grid>
+      );
+    });
+  };
+
   return (
-    <Grid item xs={12} sm={6} md={4}>
-      <Card className={classes.root} elevation={3}>
-        <Link href={`/article/${id}`}>
-          <CardActionArea>
-            <CardMedia
-              className={classes.media}
-              image={image}
-              title={name}
-            />
-            <CardContent className={classes.bodyCard}>
-              <Typography variant="h5" component="h2">
-                {name}
-              </Typography>
-              <Typography variant="body2" color="textSecondary">
-                {category}
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-        </Link>
-        <CardActions className={classes.actions}>
-          <AddCart></AddCart>
-          <Typography variant="body1" color="secondary">
-            {price}$
-          </Typography>
-        </CardActions>
-      </Card>
-    </Grid>
+    <>
+      {/* <Grid container spacing={2}>
+        {returnListCard()}
+      </Grid> */}
+
+      <Box className={classes.list}>
+        {returnListCard()}
+      </Box>
+      <div style={{ height: "245px" }}></div>
+    </>
   );
 };
 

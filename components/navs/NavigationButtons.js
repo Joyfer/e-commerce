@@ -10,7 +10,6 @@ import MenuBrands from "../buttons/navigation/MenuBrands";
 import ButtonNavigationNav from "../buttons/navigation/ButtonNavigationNav";
 import MenuButton from "../buttons/navigation/MenuButton";
 import LogoButton from "../buttons/navigation/Logo";
-import SearchNavbar from "./Search";
 
 const useStyles = makeStyles((theme) => ({
   root: {
