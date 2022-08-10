@@ -7,18 +7,6 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    [theme.breakpoints.up("lg")]: {
-      paddingRight: 125,
-      paddingLeft: 125,
-    },
-    [theme.breakpoints.only("md")]: {
-      paddingRight: 70,
-      paddingLeft: 70,
-    },
-    [theme.breakpoints.down("sm")]: {
-      paddingRight: 15,
-      paddingLeft: 15,
-    },
     margin: "10px 0",
   },
   subtitle: {

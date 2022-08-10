@@ -5,18 +5,6 @@ import ArticlesCardsList from "./ArticlesCardList";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    [theme.breakpoints.up("lg")]: {
-      paddingRight: 125,
-      paddingLeft: 125,
-    },
-    [theme.breakpoints.only("md")]: {
-      paddingRight: 70,
-      paddingLeft: 70,
-    },
-    [theme.breakpoints.down("sm")]: {
-      paddingRight: 15,
-      paddingLeft: 15,
-    },
     margin: "10px 0",
   },
   title: {
@@ -35,22 +23,22 @@ const SearchedArticles = ({ searchedQuery, cardInformation }) => {
   return (
     <Box width="100%" className={classes.root}>
       <Box mb={4}>
-      <Typography
-        className={classes.title}
-        variant="h6"
-        color="initial"
-        align="center"
-      >
-        Estás viendo:
-      </Typography>
-      <Typography
-        className={classes.subtitle}
-        variant="h2"
-        color="initial"
-        align="center"
-      >
-        {searchedQuery}
-      </Typography>
+        <Typography
+          className={classes.title}
+          variant="h6"
+          color="initial"
+          align="center"
+        >
+          Estás viendo:
+        </Typography>
+        <Typography
+          className={classes.subtitle}
+          variant="h2"
+          color="initial"
+          align="center"
+        >
+          {searchedQuery}
+        </Typography>
       </Box>
       <ArticlesCardsList cardInformation={cardInformation} />
     </Box>

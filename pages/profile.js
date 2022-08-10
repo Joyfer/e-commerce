@@ -1,7 +1,6 @@
 import Head from "next/head";
 
 //Components
-import Layout from "../components/Layout";
 import InitialNav from "../components/navs/InitialNav";
 import CartArticles from "../components/articles/CartArticles";
 import LogoutButton from "../components/buttons/session/LogoutButton";
@@ -19,13 +18,9 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "-20px",
   },
   paper: {
-    width: "90%",
     margin: "auto",
     position: "relative",
     paddingBottom: 10,
-    [theme.breakpoints.down("sm")]: {
-      width: "96%",
-    },
   },
   image: {
     height: "15vh",
@@ -56,7 +51,7 @@ export default function Profile() {
   const allProps = getData();
 
   return (
-    <Layout>
+    <>
       <Head>
         <title>Next Shop || Profile </title>
       </Head>
@@ -64,13 +59,7 @@ export default function Profile() {
         <InitialNav></InitialNav>
       </Box>
       <SectionLayout>
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          className={classes.root}
-          pb={3}
-        >
+        <Box className={classes.root}>
           <Paper className={classes.paper}>
             <Box
               py={2}
@@ -113,6 +102,6 @@ export default function Profile() {
           </Paper>
         </Box>
       </SectionLayout>
-    </Layout>
+    </>
   );
 }

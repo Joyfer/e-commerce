@@ -1,12 +1,13 @@
 import React from "react";
 
 import { makeStyles } from "@material-ui/core";
+import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     [theme.breakpoints.up("lg")]: {
-      maxWidth: "1280px",
-      margin: 'auto'
+      maxWidth: "1024px",
+      margin: "auto",
     },
   },
 }));
@@ -14,7 +15,13 @@ const useStyles = makeStyles((theme) => ({
 const SectionLayout = (props) => {
   const classes = useStyles();
 
-  return <div className={classes.root}>{props.children}</div>;
+  return (
+    <>
+      <Container>
+        <div className={classes.root}>{props.children}</div>;
+      </Container>
+    </>
+  );
 };
 
 export default SectionLayout;

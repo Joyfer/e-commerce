@@ -2,7 +2,6 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 
 //Components
-import Layout from "../../components/Layout";
 import InitialNav from "../../components/navs/InitialNav";
 import SelectInput from "../../components/inputs/select";
 import BuyArticle from "../../components/buttons/articles/BuyArticle";
@@ -20,13 +19,9 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "-20px",
   },
   paper: {
-    width: "90%",
     margin: "auto",
     position: "relative",
     paddingBottom: 10,
-    [theme.breakpoints.down("sm")]: {
-      width: "96%",
-    },
   },
   image: {
     height: "15vh",
@@ -65,7 +60,7 @@ export default function ArticleView({ allProps }) {
     return <div>Loading...</div>;
   }
   return (
-    <Layout>
+    <>
       <Head>
         <title>Next Shop || Article: {allProps.name}</title>
       </Head>
@@ -73,13 +68,7 @@ export default function ArticleView({ allProps }) {
         <InitialNav></InitialNav>
       </Box>
       <SectionLayout>
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          className={classes.root}
-          pb={3}
-        >
+        <Box className={classes.root} pb={3}>
           <Paper className={classes.paper}>
             <Grid container spacing={1}>
               <Grid item xs={12} sm={7}>
@@ -159,7 +148,7 @@ export default function ArticleView({ allProps }) {
           </Paper>
         </Box>
       </SectionLayout>
-    </Layout>
+    </>
   );
 }
 

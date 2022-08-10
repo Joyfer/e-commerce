@@ -2,7 +2,6 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 
 //Components
-import Layout from "../../components/Layout";
 import SearchedArticles from "../../components/articles/SearchedArticles";
 import InitialNav from "../../components/navs/InitialNav";
 import ChipGroup from "../../components/navs/ChipGroup";
@@ -32,7 +31,7 @@ export default function SearchPage({ brand, allProps }) {
     return <div>Loading...</div>;
   }
   return (
-    <Layout>
+    <>
       <Head>
         <title>Next Shop || Search: {brand}</title>
       </Head>
@@ -43,16 +42,11 @@ export default function SearchPage({ brand, allProps }) {
         <Box>
           <ChipGroup chips={["nike", "adidas", "vans", "converse"]} />
         </Box>
-        <Box
-          display="flex"
-          flexDirection="column"
-          justifyContent="start"
-          alignItems="center"
-        >
+        <Box>
           <SearchedArticles searchedQuery={brand} cardInformation={allProps} />
         </Box>
       </SectionLayout>
-    </Layout>
+    </>
   );
 }
 

@@ -1,17 +1,12 @@
-import { makeStyles } from "@material-ui/core/styles";
-import { Box, Typography } from "@material-ui/core";
+import { Box, Slide } from "@material-ui/core";
 import Link from "@material-ui/core/Link";
-
-const useStyles = makeStyles((theme) => ({
-  bottom: {
-    position: "absolute",
-    bottom: 0,
-  },
-}));
+import useWindowDimensions from "../../hooks/screenSize";
 
 const Footer = () => {
-  const classes = useStyles();
+  const isEnd = useWindowDimensions();
+
   return (
+    <Slide direction="up" in={isEnd}>
       <Box
         textAlign="center"
         height={100}
@@ -21,11 +16,20 @@ const Footer = () => {
         display="flex"
         justifyContent="center"
         alignItems="center"
+        position="fixed"
+        bottom="0"
+        width="100%"
       >
-        <Link href="https://joyferr-web.netlify.app/" color="inherit" variant="body1" target="_blank">
+        <Link
+          href="https://joyferr-web.netlify.app/"
+          color="inherit"
+          variant="body1"
+          target="_blank"
+        >
           Next e-commerce || Joyfer || I hope you enjoy
         </Link>
       </Box>
+    </Slide>
   );
 };
 

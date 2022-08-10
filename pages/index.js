@@ -1,7 +1,6 @@
 import Head from "next/head";
 
 //Components
-import Layout from "../components/Layout";
 import ListArticlesIndex from "../components/articles/ListArticlesIndex";
 import InitialNav from "../components/navs/InitialNav";
 import ChipGroup from "../components/navs/ChipGroup";
@@ -24,7 +23,7 @@ const useStyles = makeStyles({
 export default function Index({ allProps }) {
   const classes = useStyles();
   return (
-    <Layout>
+    <>
       <Head>
         <title>Next Shop || Home</title>
       </Head>
@@ -75,7 +74,7 @@ export default function Index({ allProps }) {
           })}
         </Box>
       </SectionLayout>
-    </Layout>
+    </>
   );
 }
 
