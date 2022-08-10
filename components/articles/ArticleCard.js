@@ -12,18 +12,16 @@ const useStyles = makeStyles(() => ({
     width: "100%",
     overflow: "auto",
     position: "absolute",
-    flex: '1 1 0px',
+    flex: "1 0 auto",
     paddingBottom: "20px",
+    left: 0,
     gap: '1rem',
     "&::-webkit-scrollbar": {
       display: "none",
     },
   },
   bookCover: {
-    display: "flex",
-    alignItems: "center",
-    flexDirection: "column",
-    justifyContent: "space-between",
+    width: 200
   },
 }));
 
@@ -33,6 +31,15 @@ const ArticleCard = ({ cardInformation }) => {
 
   const lessThanSmall = useMediaQuery(theme.breakpoints.down("xs"));
 
+    // Set the height of helping div spacing the absolute div from list
+  // Using the list height by useRef
+  const ListBookDiv = useRef(null);
+  const [heightDivList, setHeightDivList] = useState(280);
+
+  useEffect(() => {
+    setHeightDivList(ListBookDiv.current.offsetHeight);
+  }, []);
+
   if (lessThanSmall) {
     console.log(cardInformation);
   }
@@ -41,7 +48,9 @@ const ArticleCard = ({ cardInformation }) => {
     return cardInformation.map((el) => {
       return (
         <Grid item sm={6} md={4}>
-          <ItemCard itemInfo={el} key={el.id} className={classes.bookCover}></ItemCard>
+         <div key={el.id} className={classes.bookCover}>
+          <ItemCard itemInfo={el}></ItemCard>
+         </div>
         </Grid>
       );
     });
@@ -53,10 +62,10 @@ const ArticleCard = ({ cardInformation }) => {
         {returnListCard()}
       </Grid> */}
 
-      <Box className={classes.list}>
+      <Box className={classes.list} ref={ListBookDiv}>
         {returnListCard()}
       </Box>
-      <div style={{ height: "245px" }}></div>
+      <div style={{ height: heightDivList + "px" }}></div>
     </>
   );
 };
