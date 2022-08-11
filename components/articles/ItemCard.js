@@ -19,23 +19,23 @@ import useAppContext from "../../context/Context";
 const useStyles = makeStyles((theme) => ({
   media: {
     height: 220,
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("xs")]: {
       height: 120,
     },
   },
   bodyCard: {
-    height: 70,
     paddingTop: 9,
+    height: "100%",
   },
   actions: {
     justifyContent: "space-between",
   },
   subtitle: {
-    marginTop: "0.3rem"
-  }
+    marginTop: "0.3rem",
+  },
 }));
 
-const ItemCard = ({ itemInfo }) => {
+const ItemCard = ({ itemInfo, heightProp }) => {
   const { id, name, category, price, images } = itemInfo;
   const classes = useStyles();
 
@@ -45,11 +45,26 @@ const ItemCard = ({ itemInfo }) => {
     return isMobileScreen ? "body1" : "h5";
   };
 
+  const cardStyle = makeStyles((theme) => ({
+    card: {
+      [theme.breakpoints.down("xs")]: {
+        height: heightProp + "px",
+      },
+    },
+    cardBody: {
+      [theme.breakpoints.down("xs")]: {
+        height: `${heightProp - 52.5}px`,
+      },
+    },
+  }));
+
+  const cardStyleClass = cardStyle();
+
   return (
-    <div className={classes.root}>
-      <Card elevation={3}>
+    <div>
+      <Card elevation={3} className={cardStyleClass.card}>
         <Link href={`/article/${id}`}>
-          <CardActionArea>
+          <CardActionArea className={cardStyleClass.cardBody}>
             <CardMedia
               className={classes.media}
               image={images[0]}
@@ -57,7 +72,11 @@ const ItemCard = ({ itemInfo }) => {
             />
             <CardContent className={classes.bodyCard}>
               <Typography variant={getNameTypo()}>{name}</Typography>
-              <Typography variant="body2" color="textSecondary" className={classes.subtitle}>
+              <Typography
+                variant="caption"
+                color="textSecondary"
+                className={classes.subtitle}
+              >
                 {category}Zapatillas deportivas
               </Typography>
             </CardContent>
