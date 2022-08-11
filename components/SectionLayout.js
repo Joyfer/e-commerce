@@ -18,7 +18,7 @@ const SectionLayout = (props) => {
   return (
     <>
       <Container>
-        <div className={classes.root}>{props.children}</div>;
+        <div className={classes.root}>{props.children}</div>
       </Container>
     </>
   );

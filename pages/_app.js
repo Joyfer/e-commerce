@@ -28,15 +28,15 @@ export default function MyApp(props) {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
-      <AppContextProvider>
-        <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
+        <AppContextProvider>
           {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
           <CssBaseline />
           <Layout>
             <Component {...pageProps} />
           </Layout>
-        </ThemeProvider>
-      </AppContextProvider>
+        </AppContextProvider>
+      </ThemeProvider>
     </React.Fragment>
   );
 }

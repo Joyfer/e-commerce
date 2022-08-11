@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function useWindowDimensions() {
+export default function isEndOfScroll() {
   const [isEnd, setIsEnd] = useState(false);
 
   useEffect(() => {

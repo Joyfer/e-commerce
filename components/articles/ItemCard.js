@@ -14,6 +14,8 @@ import {
 
 import AddCart from "../buttons/articles/AddCart";
 
+import useAppContext from "../../context/Context";
+
 const useStyles = makeStyles((theme) => ({
   media: {
     height: 220,
@@ -28,11 +30,20 @@ const useStyles = makeStyles((theme) => ({
   actions: {
     justifyContent: "space-between",
   },
+  subtitle: {
+    marginTop: "0.3rem"
+  }
 }));
 
 const ItemCard = ({ itemInfo }) => {
   const { id, name, category, price, images } = itemInfo;
   const classes = useStyles();
+
+  const { isMobileScreen } = useAppContext();
+
+  const getNameTypo = () => {
+    return isMobileScreen ? "body1" : "h5";
+  };
 
   return (
     <div className={classes.root}>
@@ -45,9 +56,9 @@ const ItemCard = ({ itemInfo }) => {
               title={name}
             />
             <CardContent className={classes.bodyCard}>
-              <Typography variant="h5">{name}</Typography>
-              <Typography variant="body2" color="textSecondary">
-                {category}
+              <Typography variant={getNameTypo()}>{name}</Typography>
+              <Typography variant="body2" color="textSecondary" className={classes.subtitle}>
+                {category}Zapatillas deportivas
               </Typography>
             </CardContent>
           </CardActionArea>

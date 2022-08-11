@@ -1,10 +1,12 @@
-import { useEffect, useState, useRef } from "react";
-import Link from "next/link";
+import { useEffect, useState, useRef, useContext } from "react";
+
 //Material UI
-import { Grid, Box, useMediaQuery, makeStyles } from "@material-ui/core";
-import { useTheme } from "@material-ui/core/styles";
+import { Grid, Box, makeStyles } from "@material-ui/core";
 
 import ItemCard from "./ItemCard";
+
+import { AppContextProvider } from "../../context/Context";
+import useAppContext from "../../context/Context";
 
 const useStyles = makeStyles(() => ({
   list: {
@@ -15,23 +17,30 @@ const useStyles = makeStyles(() => ({
     flex: "1 0 auto",
     paddingBottom: "20px",
     left: 0,
-    gap: '1rem',
+    gap: "1rem",
     "&::-webkit-scrollbar": {
       display: "none",
     },
+    "& > :first-child": {
+      marginLeft: "1rem",
+    },
+    "& > :last-child": {
+      marginRight: "1rem",
+    },
   },
   bookCover: {
-    width: 200
+    width: 200,
   },
 }));
 
 const ArticleCard = ({ cardInformation }) => {
-  const theme = useTheme();
   const classes = useStyles();
 
-  const lessThanSmall = useMediaQuery(theme.breakpoints.down("xs"));
+  const { isMobileScreen } = useAppContext();
 
-    // Set the height of helping div spacing the absolute div from list
+  // Get if is mobile screen
+
+  // Set the height of helping div spacing the absolute div from list
   // Using the list height by useRef
   const ListBookDiv = useRef(null);
   const [heightDivList, setHeightDivList] = useState(280);
@@ -40,17 +49,13 @@ const ArticleCard = ({ cardInformation }) => {
     setHeightDivList(ListBookDiv.current.offsetHeight);
   }, []);
 
-  if (lessThanSmall) {
-    console.log(cardInformation);
-  }
-
   const returnListCard = () => {
     return cardInformation.map((el) => {
       return (
         <Grid item sm={6} md={4}>
-         <div key={el.id} className={classes.bookCover}>
-          <ItemCard itemInfo={el}></ItemCard>
-         </div>
+          <div key={el.id} className={classes.bookCover}>
+            <ItemCard itemInfo={el}></ItemCard>
+          </div>
         </Grid>
       );
     });

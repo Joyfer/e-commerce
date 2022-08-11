@@ -1,35 +1,39 @@
-import React, { useContext, createContext } from 'react';
+import React, { useContext, createContext } from "react";
+
+//Material Angular
+import { useTheme, useMediaQuery } from "@material-ui/core";
 
 //Context
 export const AppContext = createContext(null);
 
 //Provider
 export const AppContextProvider = ({ children }) => {
-  const [variableState, setVariableState] = React.useState(false);
+  // Get if is mobile screen
+  const theme = useTheme();
+  const isMobileScreen = useMediaQuery(theme.breakpoints.down("xs"));
 
   //ComponentDidMouunt
-  React.useEffect(() => {
-
-  }, []);
+  React.useEffect(() => {}, []);
 
   //
-  const values = React.useMemo(() => (
-    { variableState,      // States que seran visibles en el contexto.
-      setVariableState,   // Funciones que son exportadas para manejo externo.
-    }), 
-    [ 
-      variableState ]);   // States que serán visibles en el contexto.
+  const values = React.useMemo(
+    () => ({
+      isMobileScreen, // States que seran visibles en el contexto.
+      // Funciones que son exportadas para manejo externo.
+    }),
+    [isMobileScreen]
+  ); // States que serán visibles en el contexto.
 
   // Interface donde será expuesto como proveedor y envolverá la App.
   return <AppContext.Provider value={values}>{children}</AppContext.Provider>;
-}
+};
 
 //
 export function useAppContext() {
   const context = useContext(AppContext);
 
-  if(!context){
-    console.error('Error deploying App Context!!!');
+  if (!context) {
+    console.error("Error deploying App Context!!!");
   }
 
   return context;
